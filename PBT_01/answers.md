@@ -29,7 +29,7 @@ Ví Dụ: "Website tải chậm — file nào nặng nhất?"
 
 Câu A2:
 
-trang web dưới đây bị Google đánh giá SEO thấp vì sử dụng quá nhiều thẻ <div> mà thẻ <div> trong nhiều trường hợp không phù hợp với yêu cầu mà mình cần như 
+trang web dưới đây bị Google đánh giá SEO thấp vì sử dụng quá nhiều thẻ <div> mà thẻ <div> trong nhiều trường hợp không phù hợp với yêu cầu
 
 4 lỗi trong đoạn code:
 
@@ -45,8 +45,6 @@ trang web dưới đây bị Google đánh giá SEO thấp vì sử dụng quá 
 
 Câu A3:
 
-====================================================================
-|                        TRÌNH DUYỆT WEB (PHÁC HỌA)                 |
 ====================================================================
 |                                                                  |
 | +--------------------------------------------------------------+ |
@@ -68,3 +66,22 @@ Câu A3:
 | +--------------------------------------------------------------+ |
 |                                                                  |
 ====================================================================
+
+Câu A4:
+
+`<thead>`: Chứa các hàng tiêu đề của cột. Trình duyệt thường tự động in đậm chữ ở phần này.
+
+`<tbody>`: Chứa toàn bộ nội dung, dữ liệu chính của bảng.
+
+`<tfoot>`: Nằm ở cuối bảng, thường dùng để chốt lại dữ liệu
+
+nội dung ở chương 5 phần 3 Bảng giải thích từng thẻ
+
+ KHÔNG NÊN dùng table để tạo layout trang web VÌ:
+
+ 1: khi thu phóng màn hình cấu trúc sẽ bị phá vỡ
+
+ 2: thẻ table chỉ dùng để dựng bản không dùng để dựng khung dao diện
+
+ 3: có nhiều công cụ thay thế khác tốt hơn "Anti-pattern từ HTML 4. Dùng CSS Grid hoặc Flexbox — <table> chỉ cho tabular data"
+
