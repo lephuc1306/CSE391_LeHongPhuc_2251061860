@@ -14,8 +14,14 @@ B4: Máy chủ tiếp nhận, xử lý yêu cầu và gửi trả lại các gó
 
 B5: Trình duyệt tiến hành đọc các file vừa nhận và hiện ra giao diện hoàn chỉnh trên màn hình của bạn.
 
-Nguồn tham chiếu chương 01 (01_introduction_html_universe.md)
+*Nguồn tham chiếu chương 01 (01_introduction_html_universe.md)
 
-Cuộc Hành Trình 0.3 Giây Xuyên Đại Dương
+-Cuộc Hành Trình 0.3 Giây Xuyên Đại Dương
 
-1. WEB HOẠT ĐỘNG NHƯ THẾ NÀO?
+-1. WEB HOẠT ĐỘNG NHƯ THẾ NÀO?
+
+b,
+
+Trong DevTools của Chrome, tab Network cho thấy thông tin	Xem requests/responses	
+
+Ví Dụ: "Website tải chậm — file nào nặng nhất?"
