@@ -25,3 +25,46 @@ b,
 Trong DevTools của Chrome, tab Network cho thấy thông tin	Xem requests/responses	
 
 Ví Dụ: "Website tải chậm — file nào nặng nhất?"
+
+
+Câu A2:
+
+trang web dưới đây bị Google đánh giá SEO thấp vì sử dụng quá nhiều thẻ <div> mà thẻ <div> trong nhiều trường hợp không phù hợp với yêu cầu mà mình cần như 
+
+4 lỗi trong đoạn code:
+
+1: `<div class="header">` sửa thành `<header>`
+
+2: `<div class="menu">` sửa thành `<nav>`
+
+3: `<div class="main">` sửa thành `<main>`
+
+4: `<div class="product">` sửa thành `<article class="product">`
+
+5: `<div class="footer">` sửa thành `<footer>`
+
+Câu A3:
+
+====================================================================
+|                        TRÌNH DUYỆT WEB (PHÁC HỌA)                 |
+====================================================================
+|                                                                  |
+| +--------------------------------------------------------------+ |
+| | Hộp 1 (div - block)                                          | | 
+| +--------------------------------------------------------------+ |
+|                                                                  |
+|   [Text A]  [Text B]                                             | 
+|   (span)    (span)                                               |
+|                                                                  |
+| +--------------------------------------------------------------+ |
+| | Hộp 2 (div - block)                                          | | 
+| +--------------------------------------------------------------+ |
+|                                                                  |
+|   [Text C]  [Text D]                                             | 
+|   (span)    (strong)                                             |
+|                                                                  |
+| +--------------------------------------------------------------+ |
+| | Hộp 3 (div - block)                                          | | 
+| +--------------------------------------------------------------+ |
+|                                                                  |
+====================================================================
