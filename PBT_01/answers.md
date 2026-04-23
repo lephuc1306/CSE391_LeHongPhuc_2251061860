@@ -89,3 +89,27 @@ nội dung ở chương 5 phần 3 Bảng giải thích từng thẻ
 
  3: có nhiều công cụ thay thế khác tốt hơn "Anti-pattern từ HTML 4. Dùng CSS Grid hoặc Flexbox — <table> chỉ cho tabular data"
 
+Câu B3:
+
+Lỗi 1: Dòng 1 – Thiếu chữ "html" trong thẻ khai báo – Cách sửa: đổi thành <!DOCTYPE html>
+
+Lỗi 2: Dòng 4 – Thiếu thẻ đóng của title – Cách sửa: đổi thành <title>Trang web</title>
+
+Lỗi 3: Dòng 9 – Sai cú pháp thẻ đóng thiếu dấu / – Cách sửa: đổi `<h1>` ở cuối thành `</h1>`
+
+Lỗi 4: Dòng 13 – Sai cú pháp thẻ đóng thiếu dấu / – Cách sửa: đổi `<a>` ở cuối thành `</a>`
+
+Lỗi 5: Dòng 18 – Lỗi cú pháp: Thiếu dấu " ở thuộc tính src – Cách sửa: Đổi thành `<img src="iphone.jpg">`
+
+Lỗi 6: Dòng 18 – Lỗi ngữ nghĩa: Thẻ <img> luôn cần có thuộc tính alt để mô tả ảnh – Cách sửa: Thêm alt, <img src="iphone.jpg" alt="iPhone 16">
+
+Lỗi 7: Dòng 20 – Lỗi cú pháp: Sai thứ tự đóng thẻ – Cách sửa: Đổi thành <p>Giá: <b>25.990.000đ</b></p>
+
+Lỗi 8: Dòng 26 & 27 – Lỗi ngữ nghĩa: Tiêu đề của bảng phải dùng thẻ <th> thay vì <td> – Cách sửa: Đổi thành <th>Tên</th> và <th>Giá</th>
+
+Lỗi 9: Dòng 35 – Lỗi ngữ nghĩa: Sử dụng nhiều hơn 1 thẻ <main>. Vì đây là nội dung sidebar nên dùng thẻ <aside> – Cách sửa: Đổi <main> và </main> ở đoạn này thành <aside> và </aside>
+
+Lỗi 10: Dòng 40 – Lỗi cú pháp: Thiếu thẻ đóng của đoạn văn – Cách sửa: Đổi thành <p>Copyright 2026</p>
+
+Lỗi 11: Dòng cuối cùng – Lỗi cú pháp: Thiếu thẻ đóng toàn bộ tài liệu HTML – Cách sửa: Thêm </html> ngay bên dưới thẻ </body>
+
