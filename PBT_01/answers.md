@@ -89,3 +89,59 @@ nội dung ở chương 5 phần 3 Bảng giải thích từng thẻ
 
  3: có nhiều công cụ thay thế khác tốt hơn "Anti-pattern từ HTML 4. Dùng CSS Grid hoặc Flexbox — <table> chỉ cho tabular data"
 
+Câu B3:
+
+Lỗi 1: Dòng 1 – Thiếu chữ "html" trong thẻ khai báo – Cách sửa: đổi thành `<!DOCTYPE html>`
+
+Lỗi 2: Dòng 4 – Thiếu thẻ đóng của title – Cách sửa: đổi thành `<title>`Trang web`</title>`
+
+Lỗi 3: Dòng 9 – Sai cú pháp thẻ đóng thiếu dấu / – Cách sửa: đổi `<h1>` ở cuối thành `</h1>`
+
+Lỗi 4: Dòng 13 – Sai cú pháp thẻ đóng thiếu dấu / – Cách sửa: đổi `<a>` ở cuối thành `</a>`
+
+Lỗi 5: Dòng 18 – Lỗi cú pháp: Thiếu dấu " ở thuộc tính src – Cách sửa: Đổi thành `<img src="iphone.jpg">`
+
+Lỗi 6: Dòng 18 – Lỗi ngữ nghĩa: Thẻ` <img>` luôn cần có thuộc tính alt để mô tả ảnh – Cách sửa: Thêm alt,` <img src="iphone.jpg" alt="iPhone 16">`
+
+Lỗi 7: Dòng 20 – Lỗi cú pháp: Sai thứ tự đóng thẻ – Cách sửa: Đổi thành` <p>Giá: <b>25.990.000đ</b></p>`
+
+Lỗi 8: Dòng 26 & 27 – Lỗi ngữ nghĩa: Tiêu đề của bảng phải dùng thẻ` <th> `thay vì `<td>` – Cách sửa: Đổi thành `<th>`Tên`</th>` và `<th>`Giá`</th>`
+
+Lỗi 9: Dòng 35 – Lỗi ngữ nghĩa: Sử dụng nhiều hơn 1 thẻ `<main>`. Vì đây là nội dung sidebar nên dùng thẻ `<aside>` – Cách sửa: Đổi `<main>` và `</main>` ở đoạn này thành `<aside>` và `</aside>`
+
+Lỗi 10: Dòng 40 – Lỗi cú pháp: Thiếu thẻ đóng của đoạn văn – Cách sửa: Đổi thành` <p>Copyright 2026</p>`
+
+Lỗi 11: Dòng cuối cùng – Lỗi cú pháp: Thiếu thẻ đóng toàn bộ tài liệu HTML – Cách sửa: Thêm`</html>` ngay bên dưới thẻ` </body>`
+
+Câu B4:
+1,
+
+3 thẻ semantic HTML5 mà trang đó sử dụng: header, h1, footer (CauB4.png)
+
+2 thẻ mà trang đó KHÔNG dùng đúng semantic: div, span (CauB4_1.png)
+
+2,
+
+Nội dung của table: Bảng so sánh thông số kỹ thuật giữa các dòng điện thoại (cụ thể ở đây là iPhone 17e, iPhone 16e và iPhone 17).
+
+Bảng này dùng thẻ '<tbody>' nhưng không dùng thẻ '<thead>'
+
+3,
+
+có action: "/tim-kiem"
+
+không có method
+
+Sử dụng thẻ '<input>' với kiểu dữ liệu là text
+
+Câu C2:
+
+Quan điểm "chỉ cần dùng <div> và class là đủ" có vẻ tiện lợi và nhanh chóng lúc đầu, nhưng lại là một sai lầm lớn trong phát triển web hiện đại. Việc bỏ qua Semantic HTML sẽ gây ra những hạn chế nghiêm trọng về mặt kỹ thuật, đặc biệt ở hai khía cạnh: SEO và Accessibility.
+
+Thứ nhất, về Accessibility, các thiết bị hỗ trợ như trình đọc màn hình (Screen Reader) dành cho người khiếm thị dựa hoàn toàn vào các thẻ ngữ nghĩa để điều hướng. Nếu trang web chỉ toàn thẻ <div>, trình đọc màn hình sẽ hiểu đó là một khối văn bản phẳng, khiến người dùng khiếm thị không thể nhảy nhanh đến vùng menu (<nav>), khu vực chính (<main>) hay phần chân trang (<footer>).
+
+Thứ hai, về SEO, các bot của Google quét cấu trúc HTML để đánh giá và xếp hạng nội dung. Khi bạn dùng các thẻ như <article>, <h1>, bot sẽ hiểu ngay đó là nội dung trọng tâm để ưu tiên lập chỉ mục. Ngược lại, một trang chỉ dùng <div> sẽ không cung cấp bất kỳ manh mối ngữ nghĩa nào, khiến bot khó đánh giá mức độ liên quan, làm giảm thứ hạng SEO trầm trọng.
+
+Ví dụ cụ thể chứng minh: Nếu bạn tạo nút bấm bằng <div class="btn" onclick="...">Gửi</div> thay vì thẻ <button></button>, bạn sẽ phải tự viết thêm rất nhiều mã JavaScript để xử lý khi người dùng điều hướng bằng bàn phím (nhấn phím Enter/Space) và thêm CSS để tạo viền khi focus. Với thẻ <button> chuẩn semantic, trình duyệt đã tích hợp sẵn mọi hành vi này, thực chất lại giúp bạn tiết kiệm thời gian code hơn.
+
+Tuy nhiên, thẻ <div> vẫn cực kỳ phù hợp và cần thiết khi bạn chỉ cần container hoặc wrapper để gom nhóm các phần tử nhằm mục đích dàn trang (layout) bằng CSS (ví dụ: <div class="flex-row">). Khi khối đó không mang ý nghĩa nội dung mà chỉ phục vụ việc trang trí giao diện, <div> là lựa chọn chuẩn xác nhất.
