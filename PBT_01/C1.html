@@ -1,0 +1,124 @@
+<!DOCTYPE html> <!-- Khai báo đây là tài liệu chuẩn HTML5 -->
+<html lang="vi"> <!-- html là thẻ gốc, thuộc tính lang báo cho trình duyệt đây là trang tiếng Việt -->
+<head>
+    <!-- head chứa các thông tin meta không hiển thị trực tiếp lên giao diện -->
+    <meta charset="UTF-8"> <!-- meta khai báo bảng mã UTF-8 để hiển thị đúng tiếng Việt -->
+    <title>Chi tiết sản phẩm iPhone 16</title> <!-- title là tiêu đề hiển thị trên tab của trình duyệt -->
+</head>
+<body> <!-- body là thẻ bao bọc toàn bộ nội dung mà người dùng sẽ nhìn thấy -->
+
+    <!-- 1. HEADER & NAVIGATION -->
+    <header> <!-- header dùng cho phần đầu trang, thường chứa logo, thanh tìm kiếm và menu -->
+        <nav> <!-- nav bọc các liên kết điều hướng chính của trang web -->
+            <ul> <!-- ul bọc danh sách menu vì các mục này không cần phân biệt thứ tự trước sau -->
+                <li><a href="/">Trang chủ</a></li> <!-- li đại diện cho 1 mục, a là thẻ tạo siêu liên kết (hyperlink) -->
+                <li><a href="/san-pham">Sản phẩm</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main> <!-- main là thẻ bắt buộc để chứa nội dung cốt lõi, duy nhất của trang này (chi tiết 1 sản phẩm) -->
+
+        <!-- 2. BREADCRUMB -->
+        <nav aria-label="breadcrumb"> <!-- nav tiếp tục được dùng vì breadcrumb cũng là một dạng điều hướng -->
+            <ol> <!-- ol (ordered list) được dùng vì breadcrumb CÓ THỨ TỰ phân cấp từ lớn đến nhỏ (Trang chủ > ĐT > iPhone) -->
+                <li><a href="/">Trang chủ</a></li> 
+                <li><a href="/dien-thoai">Điện thoại</a></li>
+                <li><span aria-current="page">iPhone 16</span></li> <!-- span bọc text thường vì đây là trang hiện tại, không cần làm thẻ <a> -->
+            </ol>
+        </nav>
+
+        <article> <!-- article bọc toàn bộ khối sản phẩm vì một sản phẩm là một thực thể thông tin độc lập, trọn vẹn -->
+
+            <div class="product-top-layout"> <!-- div dùng để gom nhóm Ảnh và Thông tin thành 1 hàng ngang (dành cho CSS sau này), nó không có ngữ nghĩa đặc biệt -->
+                
+                <!-- 3. KHU VỰC ẢNH SẢN PHẨM (5 ẢNH) -->
+                <section id="product-gallery"> <!-- section chia phần bộ sưu tập ảnh thành một khu vực nội dung riêng -->
+                    <figure> <!-- figure dùng để bọc hình ảnh chính (có ý nghĩa minh họa trực tiếp cho sản phẩm) -->
+                        <img src="main-img.jpg" alt="Ảnh chính iPhone 16"> <!-- img để hiển thị ảnh, thuộc tính alt bắt buộc có để mô tả ảnh cho người khiếm thị hoặc khi web lỗi ảnh -->
+                    </figure>
+                    <ul> <!-- ul bọc danh sách 4 ảnh phụ (thumbnails) -->
+                        <li><img src="thumb1.jpg" alt="Góc mặt trước"></li> <!-- li cho từng mục ảnh phụ -->
+                        <li><img src="thumb2.jpg" alt="Góc mặt sau"></li>
+                        <li><img src="thumb3.jpg" alt="Góc cạnh bên"></li>
+                        <li><img src="thumb4.jpg" alt="Cổng sạc"></li>
+                    </ul>
+                </section>
+
+                <!-- 4. THÔNG TIN SẢN PHẨM -->
+                <section id="product-info"> <!-- section tách biệt khu vực thông tin chữ -->
+                    <h1>iPhone 16 256GB</h1> <!-- h1 dùng cho tên sản phẩm vì đây là tiêu đề quan trọng nhất (Top 1) của cả trang -->
+                    <p class="price"><strong>25.990.000đ</strong></p> <!-- p bọc đoạn văn, strong dùng để nhấn mạnh tầm quan trọng của mức giá -->
+                    
+                    <div class="rating"> <!-- div gom nhóm các ngôi sao và số lượt đánh giá -->
+                        <span>⭐⭐⭐⭐⭐</span> <!-- span bọc các ký tự ngắn, nội dòng (inline) -->
+                        <a href="#reviews">(128 đánh giá)</a> <!-- a tạo link neo nhảy nhanh xuống khu vực bình luận bên dưới -->
+                    </div>
+                    
+                    <p class="description"> <!-- p dùng cho phần mô tả văn bản dài -->
+                        iPhone 16 mang đến thiết kế mới, chip A18 siêu mạnh mẽ...
+                    </p>
+                </section>
+
+            </div>
+
+            <!-- 5. BẢNG THÔNG SỐ KỸ THUẬT -->
+            <section id="specifications"> <!-- section chia khu vực bảng cấu hình -->
+                <h2>Thông số kỹ thuật</h2> <!-- h2 là tiêu đề cấp 2, phụ thuộc vào h1 (tên sản phẩm) -->
+                <table> <!-- table sử dụng chính xác cho dữ liệu có cấu trúc hàng/cột rõ ràng như thông số kỹ thuật -->
+                    <tbody> <!-- tbody bọc phần thân dữ liệu của bảng -->
+                        <tr> <!-- tr tạo ra một hàng ngang -->
+                            <th>Màn hình</th> <!-- th (table header) đóng vai trò là ô tiêu đề cho hàng đó (Tên thông số) -->
+                            <td>6.1 inch, OLED</td> <!-- td (table data) chứa dữ liệu thực tế của thông số -->
+                        </tr>
+                        <tr>
+                            <th>Chip xử lý</th>
+                            <td>Apple A18</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- 6. KHU VỰC ĐÁNH GIÁ / BÌNH LUẬN -->
+            <section id="reviews"> <!-- section chia khu vực bình luận người dùng -->
+                <h2>Đánh giá từ khách hàng</h2> <!-- h2 tiêu đề của khu vực bình luận -->
+                
+                <article class="review-item"> <!-- article được dùng lại ở đây vì MỖI một bình luận cũng là một nội dung độc lập của một tác giả -->
+                    <header> <!-- header của bình luận chứa thông tin tác giả và ngày tháng -->
+                        <h3>Người dùng Ẩn danh</h3> <!-- h3 tên người bình luận -->
+                        <time datetime="2026-05-04">04/05/2026</time> <!-- time chuyên dùng để chuẩn hóa thời gian cho máy tính dễ đọc -->
+                    </header>
+                    <p>Sản phẩm xài mượt, camera đẹp, giao hàng siêu tốc!</p> <!-- p bọc nội dung bình luận -->
+                </article>
+
+            </section>
+
+        </article>
+
+    </main>
+
+    <!-- 7. SIDEBAR: SẢN PHẨM TƯƠNG TỰ -->
+    <aside> <!-- aside dùng cực chuẩn cho Sidebar, vì nó chứa nội dung "phụ trợ", liên quan gián tiếp đến sản phẩm chính đang xem -->
+        <h2>Sản phẩm tương tự</h2> <!-- h2 tiêu đề sidebar -->
+        <ul> <!-- ul liệt kê danh sách các sản phẩm gợi ý -->
+            <li> <!-- li cho một sản phẩm gợi ý -->
+                <article> <!-- article bọc thông tin tóm tắt của sản phẩm gợi ý -->
+                    <img src="ip15.jpg" alt="iPhone 15"> <!-- img ảnh thu nhỏ -->
+                    <h3><a href="/iphone-15">iPhone 15 128GB</a></h3> <!-- h3 bọc tên sản phẩm phụ, a để click sang trang đó -->
+                    <p>20.500.000đ</p> <!-- p bọc giá tiền -->
+                </article>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- 8. FOOTER -->
+    <footer> <!-- footer dùng cho phần chân trang, chứa bản quyền, thông tin liên hệ -->
+        <p>&copy; 2026 The Gioi Di Dong Fake. All rights reserved.</p> <!-- p chứa text thông thường -->
+        <nav> <!-- nav bọc các liên kết phụ ở chân trang (Chính sách, FAQ) -->
+            <a href="/chinh-sach">Chính sách bảo hành</a> <!-- a liên kết -->
+            <a href="/lien-he">Liên hệ</a>
+        </nav>
+    </footer>
+
+</body>
+</html>
