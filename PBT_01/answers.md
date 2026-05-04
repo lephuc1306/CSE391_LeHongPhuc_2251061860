@@ -113,3 +113,35 @@ Lỗi 10: Dòng 40 – Lỗi cú pháp: Thiếu thẻ đóng của đoạn văn 
 
 Lỗi 11: Dòng cuối cùng – Lỗi cú pháp: Thiếu thẻ đóng toàn bộ tài liệu HTML – Cách sửa: Thêm`</html>` ngay bên dưới thẻ` </body>`
 
+Câu B4:
+1,
+
+3 thẻ semantic HTML5 mà trang đó sử dụng: header, h1, footer (CauB4.png)
+
+2 thẻ mà trang đó KHÔNG dùng đúng semantic: div, span (CauB4_1.png)
+
+2,
+
+Nội dung của table: Bảng so sánh thông số kỹ thuật giữa các dòng điện thoại (cụ thể ở đây là iPhone 17e, iPhone 16e và iPhone 17).
+
+Bảng này dùng thẻ '<tbody>' nhưng không dùng thẻ '<thead>'
+
+3,
+
+có action: "/tim-kiem"
+
+không có method
+
+Sử dụng thẻ '<input>' với kiểu dữ liệu là text
+
+Câu C2:
+
+Quan điểm "chỉ cần dùng <div> và class là đủ" có vẻ tiện lợi và nhanh chóng lúc đầu, nhưng lại là một sai lầm lớn trong phát triển web hiện đại. Việc bỏ qua Semantic HTML sẽ gây ra những hạn chế nghiêm trọng về mặt kỹ thuật, đặc biệt ở hai khía cạnh: SEO và Accessibility.
+
+Thứ nhất, về Accessibility, các thiết bị hỗ trợ như trình đọc màn hình (Screen Reader) dành cho người khiếm thị dựa hoàn toàn vào các thẻ ngữ nghĩa để điều hướng. Nếu trang web chỉ toàn thẻ <div>, trình đọc màn hình sẽ hiểu đó là một khối văn bản phẳng, khiến người dùng khiếm thị không thể nhảy nhanh đến vùng menu (<nav>), khu vực chính (<main>) hay phần chân trang (<footer>).
+
+Thứ hai, về SEO, các bot của Google quét cấu trúc HTML để đánh giá và xếp hạng nội dung. Khi bạn dùng các thẻ như <article>, <h1>, bot sẽ hiểu ngay đó là nội dung trọng tâm để ưu tiên lập chỉ mục. Ngược lại, một trang chỉ dùng <div> sẽ không cung cấp bất kỳ manh mối ngữ nghĩa nào, khiến bot khó đánh giá mức độ liên quan, làm giảm thứ hạng SEO trầm trọng.
+
+Ví dụ cụ thể chứng minh: Nếu bạn tạo nút bấm bằng <div class="btn" onclick="...">Gửi</div> thay vì thẻ <button></button>, bạn sẽ phải tự viết thêm rất nhiều mã JavaScript để xử lý khi người dùng điều hướng bằng bàn phím (nhấn phím Enter/Space) và thêm CSS để tạo viền khi focus. Với thẻ <button> chuẩn semantic, trình duyệt đã tích hợp sẵn mọi hành vi này, thực chất lại giúp bạn tiết kiệm thời gian code hơn.
+
+Tuy nhiên, thẻ <div> vẫn cực kỳ phù hợp và cần thiết khi bạn chỉ cần container hoặc wrapper để gom nhóm các phần tử nhằm mục đích dàn trang (layout) bằng CSS (ví dụ: <div class="flex-row">). Khi khối đó không mang ý nghĩa nội dung mà chỉ phục vụ việc trang trí giao diện, <div> là lựa chọn chuẩn xác nhất.
