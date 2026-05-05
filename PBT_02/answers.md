@@ -22,4 +22,13 @@ type="url" → Ô nhập text (mobile có phím .com), tự kiểm tra phải ch
 
 Câu A2
 
+TH1: Form không thể Submit, hiện lỗi: "Vui lòng điền vào trường này" vì thuộc tính required bắt buộc người dùng phải nhập dữ liệu. Ô input đang để trống (value rỗng) nên vi phạm điều kiện này.
+
+TH2: Form không thể Submit, hiện lỗi: "Vui lòng bao gồm '@' trong địa chỉ email" vì thuộc tính type="email" tự động ép người dùng phải nhập đúng chuẩn email. Chuỗi "abc" bị thiếu ký tự @ bắt buộc.
+
+TH3: Form không thể Submit, hiện lỗi: "Giá trị phải nhỏ hơn hoặc bằng 10" vì thuộc tính max="10" thiết lập mức giới hạn trần lớn nhất là 10. Giá trị 15 đã vượt quá giới hạn cho phép.
+
+TH4: Form không thể Submit, hiện lỗi: "Vui lòng khớp với định dạng được yêu cầu" vì thuộc tính pattern dùng regex [0-9]{10} bắt buộc phải nhập đúng 10 chữ số. Chuỗi "abc123" vừa chứa chữ cái, vừa chỉ dài 6 ký tự nên bị từ chối.
+
+TH5: Form VẪN Submit bình thường (không hiện lỗi) nếu người dùng bấm Submit ngay lập tức. Nhưng nếu người dùng sửa đổi nội dung (ví dụ gõ thêm 1 ký tự) rồi Submit, form sẽ bị chặn và hiện lỗi yêu cầu nhập đủ 8 ký tự vì Trình duyệt có một ngoại lệ với minlength: nó chỉ kiểm tra validation khi ô input bị người dùng chỉnh sửa (trạng thái dirty). Vì value="123" là dữ liệu gán sẵn, nếu người dùng không chạm vào, trình duyệt sẽ bỏ qua bước kiểm tra này.
 
