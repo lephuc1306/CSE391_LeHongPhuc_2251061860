@@ -1,6 +1,6 @@
 .portfolio-section .container {
-    max-width: 1100px; /* Giới hạn độ rộng vừa phải để hiện ở giữa */
-    margin: 0 auto;    /* Căn giữa toàn bộ khối container */
+    max-width: 1100px; 
+    margin: 0 auto;    
     padding: 6rem 20px;
 }
 
@@ -10,16 +10,15 @@
 }
 
 .portfolio-section { 
-    background-color: #f8fafc; /* Màu nền xám cực nhẹ để làm nổi bật thẻ trắng */
+    background-color: #f8fafc; 
     padding: 6rem 0;
 }
 
 .portfolio-grid {
     display: grid;
-    /* Tự động tính toán số cột, nếu ít item sẽ tự dồn vào giữa */
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
     gap: 2.5rem;
-    justify-content: center; /* Căn giữa các thẻ bên trong lưới */
+    justify-content: center; 
 }
 
 .portfolio-item {
@@ -28,7 +27,7 @@
     border-radius: 16px;
     overflow: hidden;
     display: block;
-    aspect-ratio: 16 / 10; /* Tỉ lệ vàng cho thẻ dự án */
+    aspect-ratio: 16 / 10; 
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -40,7 +39,6 @@
     transition: transform 0.6s ease;
 }
 
-/* Hiệu ứng lớp phủ tinh tế hơn */
 .portfolio-overlay {
     position: absolute;
     inset: 0;
@@ -60,7 +58,6 @@
     transition: transform 0.4s ease;
 }
 
-/* Hover: Thẻ bay lên nhẹ và ảnh phóng to nhẹ */
 .portfolio-item:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
