@@ -70,3 +70,59 @@ Câu B1:
 
 HTML5 không thể tự động so sánh hai trường input (password và confirm password) có giống nhau hay không, nó chỉ có thể validate định dạng của từng ô riêng lẻ. Để kiểm tra hai ô khớp nhau, em bắt buộc phải dùng JavaScript.
 
+Câu C1:
+
+Lỗi 1: Dòng 1 — Thẻ <form> thiếu thuộc tính action và method
+Sửa: <form action="#" method="POST">
+
+Lỗi 2: Dòng 2 — Input "Tên" không có <label for="...">, thiếu id và name, vi phạm accessibility
+Sửa: <label for="name">Tên:</label> <input type="text" id="name" name="name" required>
+
+Lỗi 3: Dòng 4 — Input "Email" không có <label>, chỉ dùng placeholder, thiếu id và name
+Sửa: <label for="email">Email:</label> <input type="email" id="email" name="email" placeholder="Email của bạn" required>
+
+Lỗi 4: Dòng 6, 7 — Input "Password" không có <label>, thiếu id và name (dữ liệu sẽ không được gửi đi)
+Sửa: 
+<label for="pwd">Mật khẩu:</label> <input type="password" id="pwd" name="pwd" placeholder="Mật khẩu" required>
+<label for="pwd_confirm">Nhập lại mật khẩu:</label> <input type="password" id="pwd_confirm" name="pwd_confirm" placeholder="Nhập lại mật khẩu" required>
+
+Lỗi 5: Dòng 9 — Input "Phone" không có <label> và dùng sai type="text" (nên dùng type="tel")
+Sửa: <label for="phone">Phone:</label> <input type="tel" id="phone" name="phone" value="0901234567" pattern="[0-9]{10}">
+
+Lỗi 6: Dòng 11 đến 14 — Thẻ <select> thiếu <label>, id, name; thẻ <option> thiếu giá trị value
+Sửa: <label for="city">Thành phố:</label> <select id="city" name="city" required> <option value="">-- Chọn thành phố --</option> <option value="hn">Hà Nội</option> <option value="hcm">TP.HCM</option> </select>
+
+Lỗi 7: Dòng 16 đến 18 — Thẻ <label> "Tôi đồng ý" thiếu thẻ <input type="checkbox"> bên trong để tick chọn
+Sửa: <label for="terms"><input type="checkbox" id="terms" name="terms" required> Tôi đồng ý điều khoản</label>
+
+Lỗi 8: Dòng 20 — Nút submit dùng <input type="submit"> (cú pháp cũ), nên dùng thẻ <button> (best practice)
+Sửa: <button type="submit">Gửi</button>
+
+ Câu C2:
+
+1, Viết pattern regex cho CMND/CCCD và Số tài khoản:
+
+CMND/CCCD (đúng 12 chữ số): pattern="[0-9]{12}"
+
+Số tài khoản (từ 10 đến 15 chữ số): pattern="[0-9]{10,15}"
+
+(Lưu ý: Đối với mã PIN 6 chữ số và không hiển thị, ta sẽ kết hợp type="password" và pattern="[0-9]{6}")
+
+2,
+
+CHƯA đủ an toàn vì HTML5 validation chỉ hoạt động ở phía Client (trình duyệt người dùng). Bất kỳ ai có kiến thức cơ bản về IT đều có thể dễ dàng lách luật bằng cách mở Developer Tools (F12) để xóa các thuộc tính required, pattern hoặc minlength trong mã HTML. Thậm chí, họ có thể dùng các công cụ như Postman để gửi thẳng dữ liệu độc hại lên Server mà không cần qua giao diện Form. Do đó, đối với ngân hàng, bắt buộc phải có Validation ở cả Frontend và Backend.
+
+3, Liệt kê 3 loại validation mà HTML5 KHÔNG THỂ làm được (phải dùng JavaScript/Backend):
+
+1. Kiểm tra chéo giữa các ô input (Cross-field validation): Ví dụ như so sánh ô Mật khẩu và ô Nhập lại mật khẩu xem có khớp nhau 100% hay không.
+
+2. Kiểm tra dữ liệu từ cơ sở dữ liệu (Asynchronous validation): Ví dụ như kiểm tra xem số CMND/CCCD hoặc Email này đã có ai đăng ký trên hệ thống ngân hàng hay chưa.
+
+3. Kiểm tra logic nghiệp vụ phức tạp: Ví dụ như tính toán tuổi từ ngày sinh để đảm bảo khách hàng phải đủ đúng 18 tuổi tính đến ngày hôm nay, hoặc kiểm tra số tiền chuyển đi có vượt quá số dư tài khoản hay không.
+
+4. Nêu 2 rủi ro bảo mật nếu chỉ validate trên Frontend mà không validate Backend:
+
+1, Tấn công SQL Injection / XSS: Hacker có thể vượt qua HTML5 để gửi các đoạn mã độc (script) hoặc mã truy vấn SQL vào form. Nếu Backend không kiểm tra lại, hệ thống có thể bị đánh cắp toàn bộ dữ liệu người dùng hoặc bị xóa sạch cơ sở dữ liệu.
+
+2, Toàn vẹn dữ liệu (Data Corruption) & Trục lợi: Hacker có thể gửi các giá trị vô lý (ví dụ: Số tiền chuyển khoản là số âm -1000000 hoặc số quá lớn). Nếu Backend không validate lại, nó có thể dẫn đến việc cập nhật sai số dư tài khoản, gây thiệt hại tài chính nặng nề cho ngân hàng.
+
