@@ -66,3 +66,7 @@ Cách 1 (<img>): Dùng khi hình ảnh chỉ là một phần của luồng văn
 
 Cách 2 (<figure>): Dùng khi hình ảnh là một nội dung độc lập, có ý nghĩa riêng và CẦN một câu chú thích (<figcaption>) gắn liền với nó. Ví dụ: Ảnh sản phẩm kèm giá tiền trong trang danh mục, hoặc ảnh minh họa biểu đồ trong một bài báo.
 
+Câu B1:
+
+HTML5 không thể tự động so sánh hai trường input (password và confirm password) có giống nhau hay không, nó chỉ có thể validate định dạng của từng ô riêng lẻ. Để kiểm tra hai ô khớp nhau, em bắt buộc phải dùng JavaScript.
+
