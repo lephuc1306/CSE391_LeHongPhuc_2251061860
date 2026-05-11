@@ -120,7 +120,7 @@ CHƯA đủ an toàn vì HTML5 validation chỉ hoạt động ở phía Client 
 
 3. Kiểm tra logic nghiệp vụ phức tạp: Ví dụ như tính toán tuổi từ ngày sinh để đảm bảo khách hàng phải đủ đúng 18 tuổi tính đến ngày hôm nay, hoặc kiểm tra số tiền chuyển đi có vượt quá số dư tài khoản hay không.
 
-4. Nêu 2 rủi ro bảo mật nếu chỉ validate trên Frontend mà không validate Backend:
+4, Nêu 2 rủi ro bảo mật nếu chỉ validate trên Frontend mà không validate Backend:
 
 1, Tấn công SQL Injection / XSS: Hacker có thể vượt qua HTML5 để gửi các đoạn mã độc (script) hoặc mã truy vấn SQL vào form. Nếu Backend không kiểm tra lại, hệ thống có thể bị đánh cắp toàn bộ dữ liệu người dùng hoặc bị xóa sạch cơ sở dữ liệu.
 
