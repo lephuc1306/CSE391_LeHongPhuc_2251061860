@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang Multimedia - Sản phẩm</title>
+</head>
+<body>
+
+    <header style="text-align: center; margin-bottom: 30px;">
+        <svg width="150" height="50" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="25" cy="25" r="20" fill="#4CAF50" />
+            <rect x="15" y="15" width="20" height="20" fill="#FFF" />
+            <text x="55" y="32" font-size="20" font-family="Arial" fill="#333">TechStore</text>
+        </svg>
+        <h1>Giới thiệu sản phẩm công nghệ</h1>
+    </header>
+
+    <main>
+        <section style="text-align: center; margin-bottom: 40px;">
+            <h3>Nhạc nền giới thiệu (Audio)</h3>
+            <audio controls>
+                <source src="assets/audio/background-music.mp3" type="audio/mpeg">
+                <source src="assets/audio/background-music.ogg" type="audio/ogg">
+                Trình duyệt của bạn không hỗ trợ thẻ audio.
+            </audio>
+        </section>
+
+        <section style="text-align: center; margin-bottom: 40px;">
+            <h3>Video giới thiệu (Local)</h3>
+            <video controls poster="assets/images/video-thumbnail.jpg" style="max-width: 100%; height: auto; width: 600px;">
+                <source src="assets/video/promo.mp4" type="video/mp4">
+                <source src="assets/video/promo.webm" type="video/webm">
+                Trình duyệt của bạn không hỗ trợ thẻ video.
+            </video>
+        </section>
+
+        <section style="text-align: center; margin-bottom: 40px;">
+            <h3>Video Review (YouTube)</h3>
+            <iframe width="560" height="315" src="https://youtu.be/u3SIKAmPXY4?si=v9_GthbARsAvincE" 
+                    title="YouTube video player" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
+        </section>
+
+        <section style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+            <h3>Hình ảnh chi tiết</h3>
+            
+            <figure style="margin: 0; text-align: center; width: 300px;">
+                <img src="assets/images/product-1.jpg" 
+                     alt="Mặt trước của điện thoại iPhone 16 Pro Max màu Titan" 
+                     loading="lazy" 
+                     style="max-width: 100%; height: auto;">
+                <figcaption>Hình 1: Mặt trước thiết kế viền siêu mỏng</figcaption>
+            </figure>
+
+            <figure style="margin: 0; text-align: center; width: 300px;">
+                <img src="assets/images/product-2.jpg" 
+                     alt="Cụm 3 camera sau của iPhone 16 Pro Max" 
+                     loading="lazy" 
+                     style="max-width: 100%; height: auto;">
+                <figcaption>Hình 2: Cụm camera cải tiến chụp đêm sắc nét</figcaption>
+            </figure>
+
+            <figure style="margin: 0; text-align: center; width: 300px;">
+                <img src="assets/images/product-3.jpg" 
+                     alt="Hộp phụ kiện đi kèm bao gồm cáp sạc và sách hướng dẫn" 
+                     loading="lazy" 
+                     style="max-width: 100%; height: auto;">
+                <figcaption>Hình 3: Phụ kiện tiêu chuẩn đi kèm trong hộp</figcaption>
+            </figure>
+        </section>
+    </main>
+
+</body>
+</html>

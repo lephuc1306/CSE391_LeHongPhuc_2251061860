@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Thanh toán đơn hàng - Checkout</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 800px; margin: auto; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        table, th, td { border: 1px solid #ddd; }
+        th, td { padding: 12px; text-align: left; }
+        th { background-color: #f4f4f4; }
+        fieldset { margin-bottom: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 5px; }
+        legend { font-weight: bold; padding: 0 10px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        input[type="text"], input[type="date"], select, textarea { width: 100%; padding: 8px; box-sizing: border-box; }
+        .radio-group label { display: inline; margin-right: 15px; }
+        button { background-color: #28a745; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        button:hover { background-color: #218838; }
+    </style>
+</head>
+<body>
+
+    <h1>Xác nhận đơn hàng & Thanh toán</h1>
+
+    <form action="#" method="POST">
+        
+        <section>
+            <h3>1. Chi tiết giỏ hàng</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Sản phẩm</th>
+                        <th>Đơn giá</th>
+                        <th>Số lượng</th>
+                        <th>Thành tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>iPhone 16 Pro Max</td>
+                        <td>30.000.000đ</td>
+                        <td>1</td>
+                        <td>30.000.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Ốp lưng Silicon</td>
+                        <td>500.000đ</td>
+                        <td>2</td>
+                        <td>1.000.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Cáp sạc USB-C 2m</td>
+                        <td>600.000đ</td>
+                        <td>1</td>
+                        <td>600.000đ</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4" style="text-align: right; font-weight: bold;">Tổng cộng:</td>
+                        <td style="font-weight: bold; color: red;">
+                            <output name="total">31.600.000đ</output>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <div class="form-group">
+                <label for="search-item">Tìm nhanh phụ kiện khác:</label>
+                <input list="products" id="search-item" name="search-item" placeholder="Gõ tên sản phẩm...">
+                <datalist id="products">
+                    <option value="Tai nghe AirPods Pro">
+                    <option value="Sạc dự phòng MagSafe">
+                    <option value="Apple Watch Series 9">
+                    <option value="Miếng dán cường lực">
+                </datalist>
+            </div>
+        </section>
+
+        <fieldset>
+            <legend>2. Phương thức thanh toán</legend>
+            <div class="radio-group">
+                <input type="radio" id="cod" name="payment" value="cod" checked>
+                <label for="cod">Thanh toán khi nhận hàng (COD)</label>
+                
+                <input type="radio" id="bank" name="payment" value="bank">
+                <label for="bank">Chuyển khoản ngân hàng</label>
+                
+                <input type="radio" id="e-wallet" name="payment" value="wallet">
+                <label for="e-wallet">Ví điện tử (Momo/ZaloPay)</label>
+            </div>
+
+            <div class="form-group" style="margin-top: 15px;">
+                <label for="discount">Mã giảm giá (SALE + 4 chữ số):</label>
+                <input type="text" id="discount" name="discount" 
+                       pattern="SALE[0-9]{4}" 
+                       placeholder="Ví dụ: SALE2026" 
+                       title="Mã giảm giá phải bắt đầu bằng SALE và kèm 4 chữ số">
+            </div>
+
+            <div class="form-group">
+                <label for="note">Ghi chú đơn hàng:</label>
+                <textarea id="note" name="note" rows="3" placeholder="Yêu cầu đặc biệt về đóng gói, màu sắc..."></textarea>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>3. Thông tin giao hàng</legend>
+            <div class="form-group">
+                <label for="delivery-date">Ngày giao hàng mong muốn (Từ ngày mai):</label>
+                <input type="date" id="delivery-date" name="delivery-date" min="2026-05-12" required>
+            </div>
+
+            <div class="form-group">
+                <label for="time-slot">Khung giờ nhận hàng:</label>
+                <select id="time-slot" name="time-slot" required>
+                    <option value="">-- Chọn khung giờ --</option>
+                    <option value="morning">Sáng 8h - 12h</option>
+                    <option value="afternoon">Chiều 14h - 18h</option>
+                    <option value="evening">Tối 18h - 21h</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="delivery-speed">Thời gian giao hàng dự kiến (1 - 7 ngày):</label>
+                <input type="range" id="delivery-speed" name="delivery-speed" min="1" max="7" step="1" value="3">
+                <div style="display: flex; justify-content: space-between; font-size: 12px; color: #666;">
+                    <span>Giao hỏa tốc</span>
+                    <span>Giao tiết kiệm</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Điểm thưởng tích lũy đơn này:</label>
+                <meter min="0" max="100" low="30" high="80" optimum="90" value="75"></meter>
+                <span>75/100 điểm</span>
+            </div>
+        </fieldset>
+
+        <div style="text-align: right;">
+            <button type="submit" aria-label="Xác nhận đặt hàng">XÁC NHẬN ĐẶT HÀNG</button>
+        </div>
+
+    </form>
+
+</body>
+</html>
