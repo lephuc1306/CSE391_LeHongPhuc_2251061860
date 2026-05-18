@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm chứng CSS Selectors - Câu A2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 { 
+            color: red; 
+        }
+
+        .price { 
+            color: green; 
+            font-weight: bold; 
+            font-size: 1.2em;
+        }
+
+        #app header { 
+            border: 3px dashed blue; 
+            padding: 10px; 
+            margin-bottom: 20px;
+        }
+
+        nav a:first-child { 
+            background-color: yellow; 
+            padding: 5px;
+        }
+
+        .product.featured h2 { 
+            color: purple; 
+            text-decoration: underline; 
+        }
+
+        article > p { 
+            border-left: 4px solid orange; 
+            padding-left: 10px; 
+            background-color: #f9f9f9;
+        }
+
+        a[href="/"] { 
+            border: 2px solid black; 
+            border-radius: 5px;
+        }
+
+        .top-bar.dark h1 { 
+            background-color: #ffe4e1; 
+            display: inline-block;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <header class="top-bar dark">
+            <h1>ShopTLU</h1>
+            <nav>
+                <a href="/" class="active">Home</a>
+                <a href="/products">Products</a>
+                <a href="/about">About</a>
+            </nav>
+        </header>
+        
+        <main>
+            <article class="product">
+                <h2>iPhone 16</h2>
+                <p class="price">25.990.000đ</p>
+                <p>Mô tả sản phẩm...</p>
+            </article>
+            
+            <article class="product featured">
+                <h2>MacBook Pro</h2>
+                <p class="price">45.990.000đ</p>
+                <p>Mô tả sản phẩm...</p>
+            </article>
+        </main>
+    </div>
+
+</body>
+</html>
