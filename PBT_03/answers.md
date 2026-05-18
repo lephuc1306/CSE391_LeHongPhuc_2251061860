@@ -71,3 +71,52 @@ Câu A2:
 7. a[href="/"]                  → Chọn: "Home"
  
 8. .top-bar.dark h1             → Chọn: "ShopTLU"
+
+Câu A3:
+
+Trường hợp 1: content-box (mặc định) */
+→ Chiều rộng hiển thị = 450px (Bằng Width 400 + Padding trái/phải 40 + Border trái/phải 10)
+→ Không gian chiếm trên trang = 470px (Bằng Chiều rộng hiển thị 450 + Margin trái/phải 20)
+
+Trường hợp 2: border-box */
+→ Chiều rộng hiển thị = 400px (box-sizing: border-box ép tổng chiều rộng bao gồm cả padding và border phải bằng đúng thuộc tính width đã khai báo)
+→ Kích thước content thực tế = 350px (Bằng Tổng width 400 - Padding trái/phải 40 - Border trái/phải 10)
+→ Không gian chiếm trên trang = 420px (Bằng Chiều rộng hiển thị 400 + Margin trái/phải 20)
+
+Trường hợp 3: Margin collapse */
+→ Khoảng cách giữa box-a và box-b = 40px
+→ Giải thích tại sao KHÔNG PHẢI 65px: Do hiện tượng "Margin collapse" (Gộp margin) trong CSS. Khi hai block element nằm xếp dọc sát nhau, trình duyệt sẽ không cộng dồn hai giá trị margin dọc (margin-bottom của thằng trên và margin-top của thằng dưới) mà sẽ lấy giá trị LỚN HƠN (ở đây 40px > 25px nên lấy 40px).
+
+ Nâng cao */
+→ Khoảng cách = 30px. 
+(Giải thích: Khi xảy ra hiện tượng Margin collapse mà có một giá trị âm và một giá trị dương, trình duyệt sẽ tính toán bằng cách cộng hai giá trị lại với nhau: 40px + (-10px) = 30px).
+
+Câu A4:
+
+1. Tính specificity score (a, b, c) cho mỗi rule:
+
+- Rule A (p): (0, 0, 1) - Vì có 1 thẻ HTML.
+
+- Rule B (.price): (0, 1, 0) - Vì có 1 class.
+
+- Rule C (#main-price): (1, 0, 0) - Vì có 1 ID.
+
+- Rule D (p.price): (0, 1, 1) - Vì có 1 class và 1 thẻ HTML.
+
+2. Element:
+
+- Màu hiển thị: Đỏ (red).
+
+- Giải thích: Element sẽ nhận màu của Rule C (#main-price). Trong quy tắc tính điểm Specificity, ID luôn có trọng số cao nhất (1, 0, 0) so với Class hay Tag. Cột điểm bên trái lớn hơn sẽ thắng tuyệt đối các cột bên phải.
+
+3. Nếu thêm <p class="price" id="main-price" style="color: orange;">
+
+- Màu hiển thị: Cam (orange).
+
+- Giải thích: Kiểu viết CSS trực tiếp vào thẻ HTML gọi là Inline Style. Inline Style luôn có độ ưu tiên cao hơn tất cả các External/Internal CSS selectors (ID, Class, Tag), tương đương mức điểm (1, 0, 0, 0).
+
+4. Nếu Rule A thêm !important, element có màu:
+
+- Màu hiển thị: Đen (black).
+
+- Giải thích: Từ khóa `!important` là "vũ khí tối thượng" phá vỡ mọi quy tắc Specificity thông thường. Nó đè bẹp tất cả mọi thứ, bao gồm cả ID selector và Inline Style. Do đó, dù Rule A ban đầu có điểm thấp nhất (0,0,1), nhưng khi được gắn `!important`, nó sẽ giành quyền ưu tiên cao nhất và hiển thị màu đen.
