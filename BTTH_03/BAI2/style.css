@@ -1,0 +1,74 @@
+:root {
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --success: #16a34a;
+    --warning: #ea580c;
+    --danger: #dc2626;
+    --bg-color: #f1f5f9;
+    --surface: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border: #cbd5e1;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-main); padding: 20px; }
+.container { max-width: 900px; margin: 0 auto; }
+.header { text-align: center; margin-bottom: 24px; color: var(--primary); }
+
+/* Thống kê */
+.stats-panel { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; background: var(--surface); padding: 20px; border-radius: 12px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+.stat-box { font-size: 16px; }
+.stat-label { color: var(--text-muted); margin-right: 8px; }
+.stat-box strong { font-size: 20px; }
+.text-primary { color: var(--primary); }
+.text-success { color: var(--success); }
+.text-warning { color: var(--warning); }
+
+/* Danh sách Card */
+.task-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+.task-card { background: var(--surface); padding: 20px; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s; position: relative; border-left: 5px solid var(--primary); display: flex; flex-direction: column; }
+.task-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+.task-card.completed { border-left-color: var(--success); opacity: 0.7; }
+.task-card.completed .task-title { text-decoration: line-through; color: var(--text-muted); }
+.task-card.priority-Cao { border-left-color: var(--danger); }
+
+.task-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+.task-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+.badge { padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 500; }
+.badge.Cao { background: #fee2e2; color: #991b1b; }
+.badge.Trung { background: #fef3c7; color: #92400e; }
+.badge.Thấp { background: #f1f5f9; color: #475569; }
+
+.task-desc { color: var(--text-muted); font-size: 14px; margin-bottom: 16px; flex-grow: 1; }
+.task-meta { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; }
+.task-actions { display: flex; gap: 8px; justify-content: flex-end; border-top: 1px solid var(--border); padding-top: 16px; }
+
+/* Buttons */
+.btn { padding: 8px 16px; border: none; border-radius: 6px; cursor: pointer; font-weight: 500; font-size: 14px; transition: 0.2s; }
+.btn-primary { background: var(--primary); color: white; }
+.btn-secondary { background: var(--text-muted); color: white; }
+.btn-success { background: var(--success); color: white; }
+.btn-danger { background: var(--danger); color: white; }
+.btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-main); }
+.btn-outline:hover { background: #f8fafc; }
+
+/* Modal & Form */
+.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000; }
+.modal-content { background: var(--surface); width: 100%; max-width: 500px; border-radius: 12px; padding: 24px; }
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.btn-close { background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text-muted); }
+.form-group { margin-bottom: 16px; }
+.form-row { display: flex; gap: 16px; }
+.half-width { flex: 1; }
+label { display: block; margin-bottom: 6px; font-weight: 500; font-size: 14px; }
+input, textarea, select { width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 6px; font-family: inherit; }
+.error-msg { color: var(--danger); font-size: 12px; margin-top: 4px; display: block; min-height: 14px; }
+.modal-footer { display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px; }
+
+/* Utils */
+.hidden { display: none !important; }
+.notification { padding: 12px; margin-bottom: 16px; border-radius: 6px; text-align: center; font-weight: 500; transition: 0.3s; }
+.notification.success { background: #dcfce7; color: #166534; }
+.notification.error { background: #fee2e2; color: #991b1b; }
+.empty-state { text-align: center; color: var(--text-muted); padding: 40px; width: 100%; grid-column: 1 / -1; }
