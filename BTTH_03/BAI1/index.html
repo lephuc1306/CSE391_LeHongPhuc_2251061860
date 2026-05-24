@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Sinh Viên</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🎓 Quản Lý Sinh Viên</h1>
+        </header>
+
+        <div id="notification" class="notification hidden"></div>
+
+        <div class="stats-panel">
+            <div class="stat-box">
+                <span>Tổng số sinh viên:</span>
+                <strong id="total-count" class="text-primary">0</strong>
+            </div>
+            <div class="stat-box">
+                <span>Điểm trung bình lớp:</span>
+                <strong id="avg-score" class="text-success">0.00</strong>
+            </div>
+            <button id="btn-open-modal" class="btn btn-primary">+ Thêm sinh viên</button>
+        </div>
+
+        <div class="table-responsive">
+            <table id="student-table">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Mã SV</th>
+                        <th>Họ và tên</th>
+                        <th>Ngày sinh</th>
+                        <th>Lớp học</th>
+                        <th>Email</th>
+                        <th>Điểm TB</th>
+                        <th>Chức năng</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="student-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Thêm sinh viên mới</h2>
+                <button id="btn-close-modal" class="btn-close">&times;</button>
+            </div>
+            <form id="student-form">
+                <input type="hidden" id="student-id">
+                
+                <div class="form-group">
+                    <label>Mã sinh viên *</label>
+                    <input type="text" id="code" placeholder="VD: SV001">
+                    <small class="error-msg" id="err-code"></small>
+                </div>
+
+                <div class="form-group">
+                    <label>Họ và tên *</label>
+                    <input type="text" id="name" placeholder="Nguyễn Văn A">
+                    <small class="error-msg" id="err-name"></small>
+                </div>
+
+                <div class="form-group">
+                    <label>Ngày sinh *</label>
+                    <input type="date" id="dob">
+                    <small class="error-msg" id="err-dob"></small>
+                </div>
+
+                <div class="form-group">
+                    <label>Lớp học *</label>
+                    <input type="text" id="className" placeholder="VD: 64KTPM1">
+                    <small class="error-msg" id="err-className"></small>
+                </div>
+
+                <div class="form-group">
+                    <label>Email *</label>
+                    <input type="text" id="email" placeholder="email@tlu.edu.vn">
+                    <small class="error-msg" id="err-email"></small>
+                </div>
+
+                <div class="form-group">
+                    <label>Điểm trung bình (0-10) *</label>
+                    <input type="number" id="score" step="0.1" placeholder="8.5">
+                    <small class="error-msg" id="err-score"></small>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" id="btn-cancel" class="btn btn-secondary">Hủy</button>
+                    <button type="submit" class="btn btn-primary">Lưu dữ liệu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
