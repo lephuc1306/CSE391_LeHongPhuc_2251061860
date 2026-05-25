@@ -1,0 +1,124 @@
+/* 1. Dòng đầu tiên CSS: Reset Box Model */
+* { 
+    box-sizing: border-box; 
+}
+
+/* 2. Body Typography & Background */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9; /* Màu nền xám nhạt hiện đại */
+    color: #334155;            /* Màu chữ xám đậm dễ đọc, không bị gắt */
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Cấu trúc Layout bổ sung giúp trang cân đối */
+.container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+section, aside {
+    background: #ffffff;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+h2, h3 {
+    color: #1e3a8a;
+    margin-top: 0;
+}
+
+.profile-img {
+    display: block;
+    max-width: 150px;
+    border-radius: 8px;
+    margin: 15px 0 5px 0;
+    border: 3px solid #3b82f6;
+}
+
+/* 3. Header Styling với Gradient & Padding */
+header {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); /* Màu xanh gradient */
+    color: #ffffff; /* Chữ màu trắng */
+    padding: 40px 20px; /* Padding ít nhất 20px (ở đây dùng 40px cho thoáng) */
+    text-align: center;
+}
+
+header h1 {
+    margin: 0 0 15px 0;
+    font-size: 2.2rem;
+}
+
+/* 4. Navigation Links Styling */
+nav a {
+    text-decoration: none; /* Mặc định: không gạch chân */
+    color: #93c5fd;        /* Màu cụ thể (Xanh nhạt) */
+    margin: 0 15px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+/* Hover State */
+nav a:hover {
+    color: #ffffff;        /* Đổi sang màu trắng */
+    text-decoration: underline; /* Có gạch chân */
+}
+
+/* Active State */
+nav a.active {
+    color: #ffffff;
+    border-bottom: 3px solid #ffffff; /* Kiểu khác biệt cho link đang active */
+}
+
+/* 5. Table Kỹ năng Styling */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Hợp nhất border */
+    margin-top: 15px;
+}
+
+table, th, td {
+    border: 1px solid #cbd5e1;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+/* Header Row */
+thead tr {
+    background-color: #1e3a8a; /* Background đậm */
+    color: #ffffff;            /* Text trắng */
+}
+
+/* Zebra Striping (Dòng chẵn) */
+tbody tr:nth-child(even) {
+    background-color: #f8fafc; /* Đổi background nhạt hơn */
+}
+
+/* Hover Row */
+tbody tr:hover {
+    background-color: #e2e8f0; /* Đổi background khi hover */
+}
+
+/* 6. Footer Styling */
+footer {
+    background-color: #0f172a; /* Background đậm */
+    color: #94a3b8;            /* Text nhạt */
+    text-align: center;        /* Căn giữa */
+    padding: 25px 20px;
+    margin-top: 50px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}

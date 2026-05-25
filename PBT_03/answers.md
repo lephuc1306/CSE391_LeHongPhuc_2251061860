@@ -120,3 +120,83 @@ Câu A4:
 - Màu hiển thị: Đen (black).
 
 - Giải thích: Từ khóa `!important` là "vũ khí tối thượng" phá vỡ mọi quy tắc Specificity thông thường. Nó đè bẹp tất cả mọi thứ, bao gồm cả ID selector và Inline Style. Do đó, dù Rule A ban đầu có điểm thấp nhất (0,0,1), nhưng khi được gắn `!important`, nó sẽ giành quyền ưu tiên cao nhất và hiển thị màu đen.
+
+BÀI B1: STYLE TRANG PROFILE
+
+Danh sách 5 loại CSS Selector khác nhau được sử dụng trong file `style.css`:
+
+1. Element Selector (Selector theo tên thẻ):
+   - Định dạng trực tiếp các thẻ HTML chuẩn của hệ thống.
+   - Ví dụ trong bài: body, header, table, th, td, footer
+
+2. Class Selector (Selector theo lớp):
+   - Định dạng các phần tử có chung thuộc tính class nhằm tái sử dụng.
+   - Ví dụ trong bài: .container, .profile-img
+
+3. ID Selector (Selector theo định danh đơn nhất):
+   - Định dạng cho duy nhất một phần tử đặc thù trên trang thông qua ID.
+   - Ví dụ trong bài: #ve-toi, #ky-nang, #lien-he
+
+4. Descendant Selector (Selector phân cấp / con cháu):
+   - Định dạng các phần tử nằm bên trong một phần tử cha được chỉ định cụ thể.
+   - Ví dụ trong bài:
+     - nav a (Thẻ liên kết nằm bên trong thẻ điều hướng)
+     - thead tr (Dòng tiêu đề nằm trong khối thead của bảng)
+     - footer p (Thẻ đoạn văn nằm trong phần chân trang)
+
+5. Pseudo-class Selector (Selector lớp giả lập trạng thái):
+   - Định dạng phần tử dựa trên trạng thái đặc biệt hoặc thứ tự cấu trúc của nó.
+   - Ví dụ trong bài:
+     - nav a:hover (Khi người dùng di chuột qua liên kết nav)
+     - tbody tr:hover (Khi di chuột qua các dòng trong bảng dữ liệu)
+     - tbody tr:nth-child(even) (Chọn các dòng có số thứ tự chẵn trong bảng để làm hiệu ứng zebra)
+
+BÀI B2: BOX MODEL LAB
+
+Phần 1 — Chứng minh content-box vs border-box
+
+- Hộp 1 (content-box): chiều rộng thực tế = 350px 
+- Hộp 2 (border-box): chiều rộng thực tế = 300px
+
+Giải thích sự khác biệt:
+- Với Hộp 1 (content-box): Thuộc tính width (300px) chỉ áp dụng cho phần lõi nội dung (content). Do đó, chiều rộng thực tế hiển thị trên màn hình sẽ cộng dồn thêm padding và border: 300px (content) + 40px (padding 2 bên) + 10px (border 2 bên) = 350px.
+- Với Hộp 2 (border-box): Thuộc tính width (300px) được áp dụng cho toàn bộ hộp (bao gồm cả content, padding và border). Trình duyệt sẽ tự động ép phần lõi nội dung nhỏ lại để tổng chiều rộng cuối cùng luôn đúng bằng 300px.
+
+Phần 2 — Layout 3 cột
+
+Tính toán tổng chiều rộng nếu KHÔNG dùng border-box (box-sizing: content-box):
+- Cột trái (sidebar): 250px width + (15px padding x 2) = 280px
+- Cột giữa (content): 500px width + (20px padding x 2) = 540px
+- Cột phải (ads): 250px width + (15px padding x 2) = 280px
+- Tổng chiều rộng 3 cột lúc này là: 280px + 540px + 280px = 1100px.
+
+Kết luận: Vì tổng chiều rộng 3 cột (1100px) lớn hơn kích thước của container chứa nó (1000px), layout sẽ bị vỡ (tràn ra ngoài hoặc bị rớt dòng nếu dùng flex-wrap). Khi áp dụng box-sizing: border-box, tổng chiều rộng sẽ được giữ đúng 1000px (250 + 500 + 250) và layout sẽ vừa khít.
+
+BÀI B3: SPECIFICITY BATTLE
+
+Danh sách 10 rules và điểm Specificity từ thấp đến cao:
+
+1. p { color: gray; } -> Điểm: 0,0,1 (1 element)
+2. .text { color: blue; } -> Điểm: 0,1,0 (1 class)
+3. p.text { color: green; } -> Điểm: 0,1,1 (1 class, 1 element)
+4. .text.highlight { color: yellow; } -> Điểm: 0,2,0 (2 class)
+5. p.text.highlight { color: orange; } -> Điểm: 0,2,1 (2 class, 1 element)
+6. #demo { color: red; } -> Điểm: 1,0,0 (1 ID)
+7. p#demo { color: purple; } -> Điểm: 1,0,1 (1 ID, 1 element)
+8. #demo.text { color: pink; } -> Điểm: 1,1,0 (1 ID, 1 class)
+9. #demo.text.highlight { color: brown; } -> Điểm: 1,2,0 (1 ID, 2 class)
+10. p#demo.text.highlight { color: black; } -> Điểm: 1,2,1 (1 ID, 2 class, 1 element)
+
+Trả lời câu hỏi:
+
+- Element cuối cùng hiển thị màu gì? Tại sao?
+Trả lời: Element hiển thị màu đen (black). 
+
+Lý do: Bộ chọn thứ 10 (p#demo.text.highlight) có điểm specificity cao nhất là 1,2,1. Theo quy tắc của CSS, quy tắc nào có độ ưu tiên (specificity) cao nhất sẽ ghi đè lên tất cả các quy tắc có điểm thấp hơn, bất kể nó được viết ở đâu trong file.
+
+- Thay đổi thứ tự rules trong CSS file. Kết quả có đổi không? Giải thích.
+Trả lời: Không đổi. 
+
+Giải thích: Thứ tự trên dưới (dòng code nào viết sau) chỉ có tác dụng phân định thắng thua khi hai bộ chọn có CÙNG số điểm specificity. Trong trường hợp bài tập này, cả 10 bộ chọn đều có điểm số hoàn toàn khác biệt nhau, nên trình duyệt sẽ luôn luôn ưu tiên màu của bộ chọn có điểm cao nhất (1,2,1) bất kể bạn đảo nó lên đầu hay xuống cuối file.
+
+(Ghi chú: Đã đính kèm ảnh chụp kết quả hiển thị màu của chữ Hello World)
