@@ -200,3 +200,42 @@ Trả lời: Không đổi.
 Giải thích: Thứ tự trên dưới (dòng code nào viết sau) chỉ có tác dụng phân định thắng thua khi hai bộ chọn có CÙNG số điểm specificity. Trong trường hợp bài tập này, cả 10 bộ chọn đều có điểm số hoàn toàn khác biệt nhau, nên trình duyệt sẽ luôn luôn ưu tiên màu của bộ chọn có điểm cao nhất (1,2,1) bất kể bạn đảo nó lên đầu hay xuống cuối file.
 
 (Ghi chú: Đã đính kèm ảnh chụp kết quả hiển thị màu của chữ Hello World)
+
+Câu C1: Debug CSS Layout
+
+1. Tính chiều rộng thực tế (với content-box mặc định):
+- Sidebar: Width (300px) + Padding L/R (20px * 2) + Border L/R (1px * 2) = 342px
+- Content: Width (660px) + Padding L/R (30px * 2) + Border L/R (1px * 2) = 722px
+
+2. Giải thích tại sao layout bị vỡ:
+
+Tổng chiều rộng thực tế của hai khối khi nằm ngang là: `342px + 722px = 1064px`.
+Tuy nhiên, `.container` chứa chúng chỉ có chiều rộng là `960px`. Vì `1064px > 960px`, không đủ không gian trên cùng một dòng, nên phần tử `.content` bị đẩy rớt xuống dòng dưới, làm vỡ layout.
+
+3. Đưa ra 2 cách sửa khác nhau:
+- Cách 1 (Dùng border-box): Thêm thuộc tính `box-sizing: border-box;` cho cả sidebar và content. Trình duyệt sẽ ép tổng kích thước (bao gồm cả padding và border) bằng đúng `width` đã khai báo. Khi đó tổng width là `300px + 660px = 960px` (vừa khít container).
+- Cách 2 (Không dùng border-box): Giữ nguyên `content-box` mặc định, nhưng phải tự trừ đi padding và border khi set thuộc tính `width`.
+  - Sidebar: `300px - 40px (padding) - 2px (border) = 258px`
+  - Content: `660px - 60px (padding) - 2px (border) = 598px`
+
+Câu C2: Cascade Puzzle
+
+1. "Sản phẩm A" (h2) có `font-size` = ? và `color` = ?
+- font-size: 20px
+- color: green
+- Giải thích: - Về `font-size`: Phần tử này khớp với rule `.card .title { font-size: 20px; }`. Dù `body` có 16px và `.container` có 14px, nhưng CSS áp dụng rule nhắm trực tiếp vào phần tử với độ ưu tiên cao nhất.
+  - Về `color`: Phần tử này chịu tác động của `#featured .title { color: red; }` (độ ưu tiên cao do có ID). NHƯNG nó cũng có class `.highlight` với rule `color: green !important;`. Từ khóa `!important` phá vỡ mọi quy tắc Cascade và Specificity, ép buộc phần tử nhận màu xanh lá (green).
+
+2. "Mô tả sản phẩm" (p trong card featured) có `color` = ?
+- **color: blue**
+- **Giải thích:** Thẻ `<p>` này khớp với rule `.card p { color: inherit; }`. Thuộc tính `inherit` có tác dụng ép phần tử này kế thừa giá trị từ phần tử cha trực tiếp của nó. Cha của nó là thẻ `<div class="card" id="featured">`. Thẻ cha này nhận rule `.card { color: blue; }`. Do đó, thẻ `<p>` cũng lấy màu xanh dương (blue).
+
+3. "Sản phẩm B" (h2) có `font-size` = ? và `color` = ?
+- **font-size: 20px**
+- color: blue
+- Giải thích: - Về `font-size`: Khớp với rule `.card .title { font-size: 20px; }`.
+  - Về `color`: Phần tử `h2` này không có class `.highlight` hay ID `#featured`, cũng không có rule CSS nào quy định màu trực tiếp cho nó. Do đó, theo tính chất kế thừa (inheritance) mặc định của text trong CSS, nó lấy màu từ phần tử cha bao bọc nó là `.card { color: blue; }`.
+
+4. "Mô tả sản phẩm B" (p.highlight) có `color` = ?
+- color: green
+- Giải thích: Thẻ `<p>` này khớp với 2 rule: `.card p { color: inherit; }` (độ ưu tiên 0,1,1) và `.highlight { color: green !important; }` (độ ưu tiên 0,1,0). Mặc dù rule `.card p` có độ ưu tiên cao hơn, nhưng class `.highlight` có chứa từ khóa `!important`, giúp nó giành quyền ưu tiên tuyệt đối, hiển thị màu xanh lá (green).

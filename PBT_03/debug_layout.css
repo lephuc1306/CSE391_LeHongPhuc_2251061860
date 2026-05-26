@@ -1,0 +1,64 @@
+/* --- Khung chung cho Container --- */
+.container {
+    width: 960px;
+    margin: 0 auto 40px;
+    background-color: #f1f5f9;
+    border: 2px dashed #dc2626; /* Viền đỏ để dễ nhìn ranh giới container */
+}
+
+/* Clearfix để bọc các phần tử float bên trong */
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+h2 {
+    text-align: center;
+    color: #1e293b;
+}
+
+/* =========================================
+   CÁCH 1: Dùng border-box
+   ========================================= */
+.fix-1 {
+    box-sizing: border-box; /* Ép kích thước */
+}
+
+.sidebar.fix-1 {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    float: left;
+    background-color: #bfdbfe;
+}
+
+.content.fix-1 {
+    width: 660px;
+    padding: 30px;
+    border: 1px solid #ccc;
+    float: left;
+    background-color: #bbf7d0;
+}
+
+/* =========================================
+   CÁCH 2: Không dùng border-box (Tính lại width)
+   ========================================= */
+/* Width Sidebar mới = 300 - 40 (padding 2 bên) - 2 (border 2 bên) = 258px 
+   Width Content mới = 660 - 60 (padding 2 bên) - 2 (border 2 bên) = 598px
+*/
+.sidebar.fix-2 {
+    width: 258px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    float: left;
+    background-color: #fef08a;
+}
+
+.content.fix-2 {
+    width: 598px;
+    padding: 30px;
+    border: 1px solid #ccc;
+    float: left;
+    background-color: #fbcfe8;
+}

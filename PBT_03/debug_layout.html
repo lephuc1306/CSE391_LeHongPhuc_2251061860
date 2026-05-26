@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Layout C1</title>
+    <link rel="stylesheet" href="debug_layout.css">
+</head>
+<body>
+    <h2>Cách 1: Sửa bằng box-sizing: border-box</h2>
+    <div class="container clearfix">
+        <div class="sidebar fix-1">
+            <strong>Sidebar</strong><br>Width: 300px (border-box)
+        </div>
+        <div class="content fix-1">
+            <strong>Content</strong><br>Width: 660px (border-box)
+        </div>
+    </div>
+
+    <h2>Cách 2: Tính toán lại width (không dùng border-box)</h2>
+    <div class="container clearfix">
+        <div class="sidebar fix-2">
+            <strong>Sidebar</strong><br>Width: 258px (content-box)
+        </div>
+        <div class="content fix-2">
+            <strong>Content</strong><br>Width: 598px (content-box)
+        </div>
+    </div>
+</body>
+</html>
