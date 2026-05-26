@@ -1,0 +1,34 @@
+/* Code theo đúng đề bài cung cấp */
+body { 
+    font-size: 16px; 
+    color: #333; 
+}
+
+.container { 
+    font-size: 14px; 
+}
+
+.card { 
+    color: blue; 
+    /* CSS thêm vào cho dễ nhìn khi chụp ảnh (không bắt buộc) */
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 300px;
+}
+
+.card .title { 
+    font-size: 20px; 
+}
+
+.card p { 
+    color: inherit; 
+}
+
+#featured .title { 
+    color: red; 
+}
+
+.highlight { 
+    color: green !important; 
+}
