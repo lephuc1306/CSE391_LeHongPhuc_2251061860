@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Debug Flexbox</title>
+    <style>
+        /* Reset cơ bản để dễ nhìn khi lên hình */
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f9; }
+        h2 { border-bottom: 2px solid #ccc; padding-bottom: 5px; margin-top: 40px; color: #333; }
+        
+        /* =========================================
+           THAY ĐỔI CSS Ở DƯỚI ĐÂY ĐỂ CHỤP ẢNH SAU 
+           ========================================= */
+
+        /* --- LỖI 1: CARDS --- */
+        .card-container { 
+            display: flex; 
+            flex-wrap: wrap; 
+        }
+        .card { 
+            width: 30%; 
+            margin: 1.5%; 
+            background: white; 
+            border: 1px solid #ccc;
+            /* Thêm display: flex và flex-direction: column vào đây để SỬA */
+        }
+        .card img { width: 100%; height: 150px; background: #ddd; object-fit: cover; }
+        .card h3 { font-size: 18px; padding: 10px; margin: 0; }
+        .card p { padding: 0 10px; color: #666; }
+        .card .btn { 
+            padding: 10px; 
+            background: #007bff; 
+            color: white; 
+            text-align: center; 
+            display: block; 
+            text-decoration: none; 
+            /* Thêm margin-top: auto vào đây để SỬA */
+        }
+
+        /* --- LỖI 2: HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            background: #2c3e50;
+            color: white;
+            display: flex;
+            /* Thêm justify-content: center và align-items: center vào đây để SỬA */
+        }
+        .hero-content { 
+            text-align: center; 
+            background: rgba(255,255,255,0.1); 
+            padding: 40px; 
+            border-radius: 8px; 
+        }
+
+        /* --- LỖI 3: SIDEBAR BỊ CO LẠI --- */
+        .layout { 
+            display: flex; 
+            background: #fff; 
+            border: 1px solid #ccc; 
+            height: 300px;
+        }
+        .sidebar { 
+            width: 250px; 
+            background: #ff7675; 
+            padding: 20px; 
+            color: white;
+            /* Thêm flex-shrink: 0 vào đây để SỬA */
+        }
+        .content { 
+            flex: 1; 
+            background: #74b9ff; 
+            padding: 20px; 
+            /* Giả lập text siêu dài bẻ gãy layout nếu không sửa sidebar */
+            white-space: nowrap; 
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Lỗi 1: Cards không đều chiều cao</h2>
+    <div class="card-container">
+        <div class="card">
+            <img src="https://via.placeholder.com/300x150?text=Anh+1" alt="Card Image">
+            <h3>Sản phẩm 1</h3>
+            <p>Mô tả ngắn gọn.</p>
+            <a href="#" class="btn">Mua ngay</a>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/300x150?text=Anh+2" alt="Card Image">
+            <h3>Sản phẩm 2</h3>
+            <p>Mô tả rất dài để làm chiều cao của thẻ này tăng lên đáng kể. Điều này sẽ khiến nút "Mua ngay" của các thẻ bên cạnh bị giật lên trên nếu không dùng Flexbox đúng cách.</p>
+            <a href="#" class="btn">Mua ngay</a>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/300x150?text=Anh+3" alt="Card Image">
+            <h3>Sản phẩm 3</h3>
+            <p>Mô tả độ dài trung bình.</p>
+            <a href="#" class="btn">Mua ngay</a>
+        </div>
+    </div>
+
+    <h2>Lỗi 2: Muốn items nằm giữa cả ngang lẫn dọc</h2>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Tiêu đề Hero</h1>
+            <p>Khối này hiện đang dính ở góc trên bên trái!</p>
+        </div>
+    </div>
+
+    <h2>Lỗi 3: Sidebar bị co lại khi content quá dài</h2>
+    <div class="layout">
+        <div class="sidebar">
+            <h3>Sidebar (250px)</h3>
+            <p>Menu 1</p>
+            <p>Menu 2</p>
+        </div>
+        <div class="content">
+            <h3>Main Content</h3>
+            <p>Nội dung </p>
+        </div>
+    </div>
+
+</body>
+</html>
