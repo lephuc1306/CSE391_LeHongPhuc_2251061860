@@ -1,0 +1,112 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: monospace, sans-serif;
+}
+
+body {
+    background-color: #0f172a; 
+    color: #f8fafc;
+    padding: 32px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 200px minmax(300px, 1fr) 200px;
+    gap: 20px; 
+
+    grid-template-areas:
+        "header header header"
+        "hero hero hero"
+        "sidebar main ads"
+        "footer footer footer";
+        
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header       { grid-area: header; }
+.hero         { grid-area: hero; }
+.sidebar      { grid-area: sidebar; }
+.main-content { grid-area: main; }
+.ads          { grid-area: ads; }
+.footer       { grid-area: footer; }
+
+.header, .hero, .footer {
+    grid-column: 1 / -1; 
+}
+
+.header, .footer {
+    border: 1px dashed #38bdf8;
+    padding: 24px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.hero {
+    border: 1px dashed #38bdf8;
+    padding: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: center;
+}
+
+.hero-text {
+    text-align: center;
+}
+
+.hero-card-featured {
+    border: 1px solid #f59e0b;
+    background-color: rgba(245, 158, 11, 0.1);
+    padding: 32px;
+    border-radius: 8px;
+    text-align: center;
+    grid-column: span 2; 
+}
+
+.sidebar {
+    border: 1px dashed #38bdf8;
+    padding: 20px;
+}
+.sidebar h3 {
+    margin-bottom: 16px;
+    text-align: center;
+}
+.filters label {
+    display: block;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.ads {
+    border: 1px dashed #38bdf8;
+    padding: 10px;
+    text-align: center;
+}
+.ads h3 {
+    margin-bottom: 12px;
+}
+.ads img {
+    max-width: 100%; /* Giữ ảnh không tràn khung */
+    height: auto;
+    border-radius: 4px;
+}
+
+.main-content {
+    /* Yêu cầu: Main là Grid con 3 cột */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    border: 1px dashed #38bdf8;
+    padding: 20px;
+}
+
+.card {
+    border: 1px solid #94a3b8;
+    padding: 40px 10px;
+    text-align: center;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.05);
+}
