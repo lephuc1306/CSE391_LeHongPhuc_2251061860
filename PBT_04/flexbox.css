@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: #f8fafc;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Logo trái, Menu giữa, Nút phải */
+    align-items: center; 
+    background-color: #1e293b;
+    color: white;
+    padding: 16px 32px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 32px; 
+}
+
+.nav-links a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 16px;
+}
+
+.auth-buttons a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.auth-buttons .login {
+    background-color: transparent;
+}
+
+.auth-buttons .login:hover {
+    text-decoration: underline;
+}
+
+.auth-buttons .register {
+    background-color: #3b82f6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 24px;
+}
+
+.container h2 {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.products-grid {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 26px; 
+    justify-content: flex-start;
+}
+
+.card {
+    flex: 0 0 calc(25% - 20px); 
+    
+    /* Cấu trúc bên trong card là Flex Column */
+    display: flex;
+    flex-direction: column;
+    
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Box shadow mặc định */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    min-height: 380px; 
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card-info {
+    padding: 16px;
+}
+
+.card-info h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.card-info .price {
+    font-weight: bold;
+    color: #ef4444;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.card-info .desc {
+    font-size: 14px;
+    color: #666;
+}
+
+
+.btn-buy {
+    margin-top: auto; 
+    
+    background-color: #10b981;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-buy:hover {
+    background-color: #059669;
+}
