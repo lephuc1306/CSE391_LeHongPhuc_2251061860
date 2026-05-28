@@ -1,0 +1,181 @@
+### Câu A1: Viewport & Mobile-First
+
+**1. Viết chính xác thẻ `<meta viewport>` chuẩn. Giải thích từng thuộc tính.**
+
+* **Thẻ chuẩn:** ```html
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+Giải thích:
+
+name="viewport": Khai báo cho trình duyệt biết thẻ này dùng để kiểm soát và điều chỉnh viewport (vùng hiển thị nội dung trang web trên thiết bị).
+
+width=device-width: Yêu cầu trình duyệt thiết lập chiều rộng của viewport bằng đúng với chiều rộng vật lý của màn hình thiết bị đang sử dụng.
+
+initial-scale=1.0: Thiết lập mức độ thu phóng ban đầu là 100% (tỷ lệ 1:1) khi trang web được tải lần đầu, giúp trang web không bị tự động phóng to hay thu nhỏ ngoài ý muốn.
+
+2. Nếu THIẾU thẻ này, iPhone sẽ hiển thị trang web như thế nào? 
+
+Nếu thiếu thẻ này, các trình duyệt trên thiết bị di động (như Safari trên iPhone) sẽ giả định rằng trang web này được thiết kế dành cho Desktop.
+
+Nó sẽ render (kết xuất) trang web trên một viewport ảo với độ rộng mặc định của Desktop (thường khoảng 980px).
+
+Sau đó, trình duyệt sẽ tự động thu nhỏ toàn bộ trang web lại để nhét vừa vào màn hình điện thoại. Hậu quả là hình ảnh, bố cục và chữ trên trang web sẽ hiển thị cực kỳ nhỏ, người dùng không thể đọc được nội dung mà bắt buộc phải dùng ngón tay phóng to (pinch-to-zoom) và cuộn ngang cuộn dọc liên tục để xem.
+
+3. Mobile-First và Desktop-First khác nhau thế nào? Viết ví dụ CSS cho mỗi cách với breakpoint 768px. Tại sao Mobile-First được khuyên dùng?
+
+Sự khác nhau:
+
+Mobile-First (Ưu tiên di động): Bắt đầu viết code CSS mặc định cho màn hình nhỏ nhất (điện thoại) trước. Sau đó, sử dụng Media Query @media (min-width: ...) để "nâng cấp", thêm các thuộc tính CSS cho các thiết bị màn hình lớn hơn (tablet, desktop).
+
+Desktop-First (Ưu tiên máy tính): Bắt đầu viết code CSS mặc định cho giao diện màn hình lớn trước. Sau đó, sử dụng Media Query @media (max-width: ...) để ghi đè, ẩn bớt hoặc tinh chỉnh lại giao diện cho các thiết bị màn hình nhỏ.
+
+Ví dụ CSS:
+
+Ví dụ Mobile-First:
+
+CSS
+/* CSS mặc định chạy trên Mobile (màn hình nhỏ) */
+.container {
+    width: 100%;
+    padding: 10px;
+}
+
+/* Breakpoint nâng cấp cho Tablet/Desktop (từ 768px trở lên) */
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+        padding: 20px;
+    }
+}
+Ví dụ Desktop-First:
+
+CSS
+/* CSS mặc định chạy trên Desktop (màn hình lớn) */
+.container {
+    width: 1200px;
+    padding: 20px;
+}
+
+/* Breakpoint điều chỉnh cho Mobile (nhỏ hơn 768px) */
+@media (max-width: 767.98px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+}
+Tại sao Mobile-First được khuyên dùng?
+
+Tối ưu hiệu suất (Performance): Thiết bị di động thường có cấu hình yếu và mạng chậm hơn máy tính. Với Mobile-First, trình duyệt trên điện thoại chỉ cần tải và đọc các đoạn CSS cơ bản nhất, bỏ qua các khối @media (min-width) của màn hình lớn. Ngược lại, với Desktop-First, điện thoại phải tải một đống CSS phức tạp của Desktop, rồi lại tải thêm CSS ghi đè để bóp nhỏ lại, gây lãng phí tài nguyên và làm chậm trang.
+
+Tư duy thiết kế cốt lõi: Việc thiết kế từ màn hình nhỏ ép buộc lập trình viên phải tập trung vào những tính năng và nội dung quan trọng nhất của trang web, tránh nhồi nhét. Việc "xây thêm phòng" (scale-up từ mobile lên desktop) luôn dễ dàng và logic hơn việc "đập bỏ phòng" (scale-down từ desktop xuống mobile).
+
+### Câu A2A2: Breakpoints
+
+Dưới đây là các breakpoints chuẩn được hệ thống hóa theo tài liệu của framework Bootstrap 5. Việc phân chia cột cho lưới sản phẩm sẽ mở rộng dần theo tư duy Mobile-First:
+
+| Breakpoint (Class) | Kích thước pixel | Thiết bị đại diện | Ví dụ: Lưới sản phẩm nên hiển thị |
+| :--- | :--- | :--- | :--- |
+| **X-Small (xs)** | `< 576px` | Điện thoại di động (cầm dọc) | **1 cột** (Ảnh to, chữ rõ ràng nhất) |
+| **Small (sm)** | `>= 576px` | Điện thoại (cầm ngang) hoặc Tablet nhỏ | **2 cột** |
+| **Medium (md)** | `>= 768px` | Máy tính bảng (iPad cầm dọc) | **2 hoặc 3 cột** |
+| **Large (lg)** | `>= 992px` | Laptop, màn hình Desktop cỡ nhỏ | **3 hoặc 4 cột** |
+| **Extra Large (xl)** | `>= 1200px` | Màn hình Desktop tiêu chuẩn | **4 cột** |
+| **XX-Large (xxl)** | `>= 1400px` | Màn hình Desktop cỡ lớn, màn hình siêu rộng | **4, 5 hoặc 6 cột** (Tùy kích thước card) |
+
+### Câu A3: Media Queries
+
+Dựa vào đoạn CSS viết theo phương pháp Mobile-First (sử dụng `min-width`), dưới đây là các giá trị `width` tương ứng của `.container` khi được render trên các kích thước màn hình khác nhau:
+
+| Chiều rộng màn hình | `.container` width |
+| :--- | :--- |
+| 375px (iPhone SE) | **100%** |
+| 600px | **540px** |
+| 800px | **720px** |
+| 1000px | **960px** |
+| 1400px | **1140px** |
+
+**Giải thích:**
+* **375px:** Không thỏa mãn bất kỳ breakpoint nào, trình duyệt lấy giá trị mặc định là `100%`.
+* **600px:** Thỏa mãn điều kiện lớn hơn `576px`, áp dụng `width: 540px`.
+* **800px:** Thỏa mãn điều kiện lớn hơn `768px` (ghi đè dòng 576px), áp dụng `width: 720px`.
+* **1000px:** Thỏa mãn điều kiện lớn hơn `992px` (ghi đè các dòng trên), áp dụng `width: 960px`.
+* **1400px:** Thỏa mãn điều kiện lớn hơn `1200px` (điều kiện lớn nhất), áp dụng `width: 1140px`.
+
+### Câu A4: SCSS Basics
+
+**Giải thích 4 tính năng chính của SCSS và ví dụ:**
+
+**1. Variables (Biến - `$primary-color`)**
+* **Giải thích:** Cho phép lưu trữ các giá trị thường xuyên sử dụng lại (như mã màu, font chữ, kích thước) vào một "biến" duy nhất. Khi cần thay đổi, chỉ cần sửa giá trị của biến ở một chỗ, toàn bộ file sẽ tự động cập nhật theo.
+* **Ví dụ:**
+    ```scss
+    $primary-color: #7c3aed;
+    
+    .button {
+        background-color: $primary-color;
+        border: 1px solid $primary-color;
+    }
+    ```
+
+**2. Nesting (Viết CSS lồng nhau)**
+* **Giải thích:** SCSS cho phép viết các selector lồng vào nhau theo đúng cấu trúc phân cấp của HTML. Việc này giúp code gọn gàng, dễ đọc, dễ quản lý hơn và tránh việc phải viết lặp lại tên selector cha nhiều lần. Ký tự `&` được dùng để đại diện cho selector cha trực tiếp (thường dùng cho các trạng thái như `:hover` hoặc class giả).
+* **Ví dụ:**
+    ```scss
+    .navbar {
+        background: #333;
+        
+        ul {
+            list-style: none;
+        }
+        
+        a {
+            color: white;
+            text-decoration: none;
+            
+            &:hover {
+                color: $primary-color; /* Dấu & đại diện cho thẻ 'a' */
+            }
+        }
+    }
+    ```
+
+**3. Mixins (`@mixin`, `@include`)**
+* **Giải thích:** Khá giống với "hàm" (function) trong lập trình. Tự định nghĩa một cụm thuộc tính CSS bằng `@mixin`, sau đó có thể gọi lại cụm đó ở bất kỳ đâu bằng `@include`. Mixin cực kỳ mạnh mẽ vì nó có thể nhận tham số truyền vào để thay đổi giá trị linh hoạt.
+* **Ví dụ:**
+    ```scss
+    @mixin flex-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .hero-banner {
+        @include flex-center;
+        height: 100vh;
+    }
+    ```
+
+**4. `@extend` / Inheritance (Kế thừa)**
+* **Giải thích:** Cho phép một class chia sẻ (kế thừa) toàn bộ các thuộc tính CSS của một class khác. Giúp tránh lặp lại code cho các phần tử có chung kiểu dáng cơ bản nhưng chỉ khác biệt một vài chi tiết nhỏ (ví dụ: các nút bấm cơ bản và nút bấm mang tính cảnh báo).
+* **Ví dụ:**
+    ```scss
+    .btn-base {
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-align: center;
+    }
+    
+    .btn-danger {
+        @extend .btn-base; /* Kế thừa toàn bộ padding, border-radius... */
+        background-color: red;
+        color: white;
+    }
+    ```
+
+---
+
+**Tại sao trình duyệt KHÔNG đọc được file `.scss`? Cần bước gì để chuyển SCSS → CSS?**
+
+* **Tại sao không đọc được:** Trình duyệt web (Chrome, Safari, Edge...) chỉ được lập trình để hiểu và biên dịch 3 ngôn ngữ cốt lõi là HTML, CSS và JavaScript. SCSS là một ngôn ngữ tiền xử lý (preprocessor) chứa các cú pháp nâng cao (biến, vòng lặp, mixin...) mà engine của trình duyệt không có bộ giải mã (parser) để đọc hiểu.
+* **Bước cần thiết để chuyển đổi:** Bắt buộc phải trải qua một bước gọi là **Biên dịch (Compile)**. Bước này sử dụng một trình biên dịch (như extension *Live Sass Compiler* trên VS Code, Webpack, hoặc Vite) để dịch toàn bộ mã code `.scss` thành mã `.css` tiêu chuẩn. Sau đó, file `.css` (đầu ra) mới là file được nhúng vào thẻ `<link>` trong HTML để trình duyệt sử dụng.
+
