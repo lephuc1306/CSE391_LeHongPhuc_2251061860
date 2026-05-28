@@ -1,0 +1,108 @@
+/* Styling cơ bản cho demo dễ nhìn */
+body { font-family: sans-serif; padding: 40px; background: #f8fafc; }
+.section { margin-bottom: 50px; padding-bottom: 20px; border-bottom: 1px solid #ccc; }
+
+/* ==================================================
+   1. Card hover effect
+   ================================================== */
+.anim-card {
+    width: 300px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden; /* Cần thiết cho border-radius không bị lòi ảnh */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    
+    /* Thuộc tính Transition bắt buộc */
+    transition: all 0.3s ease; 
+}
+.anim-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+}
+
+/* ==================================================
+   3. Image zoom
+   ================================================== */
+.img-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden; /* Bắt buộc: để ảnh phóng to không tràn ra ngoài card */
+}
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease; /* Thêm mượt mà cho ảnh */
+}
+.anim-card:hover .img-container img {
+    transform: scale(1.1); /* Phóng to ảnh khi hover vào card */
+}
+
+/* ==================================================
+   2. Button hover
+   ================================================== */
+.card-body { padding: 20px; text-align: center; }
+.btn-buy {
+    padding: 10px 20px;
+    background-color: #e2e8f0;
+    color: #333;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    
+    /* Chuyển đổi màu và scale */
+    transition: all 0.3s ease; 
+}
+.btn-buy:hover {
+    background-color: #7c3aed; /* Đổi màu */
+    color: white;              /* Đổi màu chữ */
+    transform: scale(1.05);    /* Scale nhẹ */
+}
+
+/* ==================================================
+   4. Loading spinner
+   ================================================== */
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #e2e8f0;
+    border-top: 5px solid #2563eb; /* Màu đường viền trên */
+    border-radius: 50%;            /* Tạo hình tròn */
+    
+    /* Gắn animation spin */
+    animation: spin 1s linear infinite; 
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ==================================================
+   5. Fade-in khi scroll (CSS only)
+   ================================================== */
+.fade-box {
+    padding: 20px;
+    background: #10b981;
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    width: 300px;
+}
+
+/* Gắn class này để chạy animation */
+.fade-in-element {
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
