@@ -179,3 +179,14 @@ Dựa vào đoạn CSS viết theo phương pháp Mobile-First (sử dụng `min
 * **Tại sao không đọc được:** Trình duyệt web (Chrome, Safari, Edge...) chỉ được lập trình để hiểu và biên dịch 3 ngôn ngữ cốt lõi là HTML, CSS và JavaScript. SCSS là một ngôn ngữ tiền xử lý (preprocessor) chứa các cú pháp nâng cao (biến, vòng lặp, mixin...) mà engine của trình duyệt không có bộ giải mã (parser) để đọc hiểu.
 * **Bước cần thiết để chuyển đổi:** Bắt buộc phải trải qua một bước gọi là **Biên dịch (Compile)**. Bước này sử dụng một trình biên dịch (như extension *Live Sass Compiler* trên VS Code, Webpack, hoặc Vite) để dịch toàn bộ mã code `.scss` thành mã `.css` tiêu chuẩn. Sau đó, file `.css` (đầu ra) mới là file được nhúng vào thẻ `<link>` trong HTML để trình duyệt sử dụng.
 
+### Bài B3 - Biên dịch SCSS
+
+Để chuyển SCSS -> CSS, có thể sử dụng các cách sau:
+
+**Cách 1: Sử dụng Extension "Live Sass Compiler" trên VS Code (Khuyên dùng)**
+- Chỉ cần nhấn vào nút **"Watch Sass"** ở thanh Status Bar phía dưới màn hình VS Code. Trình biên dịch sẽ tự động chạy ngầm và tạo ra file `style.css` mỗi khi lưu file.
+
+**Cách 2: Sử dụng dòng lệnh bằng Node.js (Sass CLI)**
+Nếu đã cài đặt `sass` qua npm, chạy lệnh sau trong Terminal (đứng ở thư mục gốc của dự án):
+```bash
+npx sass scss/style.scss style.css --watch

@@ -1,0 +1,27 @@
+// Import theo thứ tự: Biến -> Mixin -> Các component
+@import 'variables';
+@import 'mixins';
+
+/* --- Global Reset --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: $base-font-size;
+
+    // Sử dụng mixin responsive cho font size
+    @include respond-to(tablet) { font-size: 16px; }
+    @include respond-to(desktop) { font-size: 18px; }
+}
+
+body {
+    font-family: $font-primary;
+    background: $bg-main;
+    line-height: 1.6;
+}
+
+// Import toàn bộ layout và UI
+@import 'components';

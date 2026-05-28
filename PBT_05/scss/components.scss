@@ -1,0 +1,140 @@
+/* --- Nesting Block 1: Header --- */
+.header {
+    background: $primary-color;
+    color: $white;
+    padding: $spacing-md;
+    @include flex-between;
+
+    .logo {
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+
+    .hamburger {
+        font-size: 24px;
+        cursor: pointer;
+        display: block;
+
+        @include respond-to(tablet) {
+            display: none;
+        }
+    }
+
+    .desktop-menu {
+        display: none;
+
+        @include respond-to(tablet) {
+            display: flex;
+            gap: $spacing-lg;
+        }
+
+        a {
+            color: $white;
+            text-decoration: none;
+            
+            // Sử dụng & cho trạng thái hover
+            &:hover {
+                text-decoration: underline;
+                color: lighten($primary-color, 40%);
+            }
+        }
+    }
+}
+
+/* --- Nesting Block 2: Layout chính & Sidebar --- */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    padding: $spacing-md;
+    gap: $spacing-lg;
+
+    @include respond-to(desktop) {
+        display: grid;
+        grid-template-columns: 250px 1fr 200px;
+        align-items: start;
+    }
+}
+
+.sidebar {
+    display: none;
+    
+    @include respond-to(tablet) {
+        display: block;
+        width: 100%;
+        background: $bg-sidebar;
+        padding: $spacing-md;
+    }
+
+    @include respond-to(desktop) {
+        width: auto;
+        height: 100vh;
+    }
+
+    ul {
+        list-style: none;
+        
+        li {
+            padding: $spacing-sm 0;
+            border-bottom: 1px solid $border-color;
+            
+            // Phần tử con cuối cùng không có viền đáy
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+}
+
+/* --- Nesting Block 3: Product Grid & Card --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-md;
+
+    @include respond-to(tablet) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond-to(desktop) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.card {
+    background: $white;
+    padding: $spacing-sm;
+    border: 1px solid $border-color;
+    text-align: center;
+    @include card-shadow; // Gọi mixin shadow
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    h3 {
+        margin-top: $spacing-sm;
+        color: $secondary-color;
+    }
+}
+
+/* --- Ads Bar & Footer --- */
+.ads-bar {
+    display: none;
+
+    @include respond-to(desktop) {
+        display: block;
+        background: $bg-ads;
+        padding: $spacing-md;
+        height: 100vh;
+    }
+}
+
+.footer {
+    background: $secondary-color;
+    color: $white;
+    text-align: center;
+    padding: $spacing-lg;
+    margin-top: $spacing-lg;
+}
