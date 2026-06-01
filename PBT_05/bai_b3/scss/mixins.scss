@@ -1,0 +1,22 @@
+// Mixin để căn giữa phần tử bằng Flexbox
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// Mixin cho nút bấm (Button)
+@mixin button-style($bg-color, $hover-color) {
+    padding: 10px 20px;
+    border: none;
+    border-radius: $border-radius;
+    background-color: $bg-color;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: $hover-color;
+    }
+}

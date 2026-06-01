@@ -189,4 +189,49 @@ Dựa vào đoạn CSS viết theo phương pháp Mobile-First (sử dụng `min
 **Cách 2: Sử dụng dòng lệnh bằng Node.js (Sass CLI)**
 Nếu đã cài đặt `sass` qua npm, chạy lệnh sau trong Terminal (đứng ở thư mục gốc của dự án):
 ```bash
-npx sass scss/style.scss style.css --watch
+"npx sass scss/style.scss style.css --watch"
+
+### Bài C1: Phân tích trang web thực
+
+**Phân tích sự thay đổi layout:**
+
+* **Navigation thay đổi thế nào?**
+    * **Desktop (1440px):** Có một thanh tìm kiếm (search bar) lớn ở giữa header. Bên trái là menu Sidebar mở rộng hiển thị đầy đủ icon và text (Trang chủ, Shorts, Kênh đăng ký...).
+    * **Tablet (768px):** Thanh tìm kiếm bị thu ngắn lại. Sidebar bên trái bị thu gọn thành dạng "Mini Sidebar" (chỉ còn icon, mất chữ) hoặc bị ẩn đi, người dùng phải bấm vào icon Hamburger (☰) góc trái trên cùng để mở ra dạng Drawer (ngăn kéo).
+    * **Mobile (375px):** Thanh tìm kiếm dài hoàn toàn biến mất, thay bằng một icon kính lúp đơn giản. Thanh Sidebar bên trái biến mất hoàn toàn, thay vào đó YouTube chuyển Navigation xuống dưới cùng màn hình (Bottom Navigation Bar) để tiện thao tác bằng ngón cái.
+* **Lưới content thay đổi mấy cột?**
+    * **Desktop:** Lưới video hiển thị **4 đến 5 cột** tùy độ phân giải.
+    * **Tablet:** Lưới video giảm xuống còn **2 hoặc 3 cột**.
+    * **Mobile:** Lưới video gộp lại chỉ còn **1 cột** duy nhất, mỗi ảnh thumbnail của video trải dài 100% chiều rộng màn hình.
+* **Elements nào bị ẩn trên mobile?**
+    * Toàn bộ menu Sidebar bên trái.
+    * Khung nhập text tìm kiếm (chỉ hiện lại khi bấm vào kính lúp).
+    * Nút "Tạo video" (hình máy quay) hoặc các tính năng mở rộng trên header bị ẩn vào trong menu phụ.
+    * Mô tả ngắn của video (thường thấy ở giao diện list) bị ẩn, chỉ giữ lại Tiêu đề, Tên kênh và Lượt xem.
+* **Font size có thay đổi không?**
+    * **Có.** Tiêu đề video trên Mobile thường có font-size nhỏ hơn so với Desktop để tránh bị rớt dòng quá nhiều. Tuy nhiên, các icon ở thanh điều hướng dưới cùng lại được thiết kế tương đối lớn để dễ dàng chạm (tap target size tối ưu cho ngón tay).
+
+
+**Giải thích nhanh:**
+* YouTube sử dụng rất nhiều media queries để tính toán số lượng cột video. Ví dụ, họ dùng `@media (min-width: 1144px)` và `@media (max-width: 1311px)` để điều chỉnh thuộc tính `calc()` cho chiều rộng của mỗi component card video, đảm bảo lưới luôn lấp đầy màn hình một cách linh hoạt (Fluid Grid) trước khi nhảy sang một số lượng cột mới.
+
+### Bài C2: Thiết kế Responsive Strategy (Đặt bàn nhà hàng)
+
+### 1. Phân tích Sơ đồ bố cục (Wireframe Strategy)
+
+**📱 Mobile (Dưới 768px) - Thiết kế mặc định:**
+- **Layout tổng thể:** Xếp chồng theo chiều dọc (1 cột duy nhất) để người dùng dễ cuộn (scroll).
+- **Những gì bị ẩn:** Các chi tiết trang trí rườm rà trên Header hoặc Hero image bị ẩn đi. Chỉ giữ lại Logo và nút gọi điện thoại/đặt bàn nổi bật.
+- **Grid ảnh món ăn:** Xếp thành lưới 2 cột (2x3) hoặc 1 cột để ảnh đủ lớn dễ nhìn.
+- **Form nằm đâu:** Form đặt bàn nằm ngay dưới lưới ảnh món ăn, trải dài full chiều rộng (100%) màn hình.
+- **Bản đồ:** Nằm dưới cùng, ngay trên Footer.
+
+**💊 Tablet (Từ 768px đến 1023px):**
+- **Layout tổng thể:** Bắt đầu tận dụng chiều ngang màn hình.
+- **Grid ảnh món ăn:** Hiển thị lưới 3 cột, 2 hàng (3x2).
+- **Form và Bản đồ nằm đâu:** Đặt Form và Bản đồ nằm cạnh nhau (mỗi phần chiếm 50% chiều rộng) bằng Grid 2 cột để tối ưu không gian hiển thị.
+
+**💻 Desktop (Từ 1024px trở lên):**
+- **Layout tổng thể:** Chia thành **2 cột chính** (Tỷ lệ 2:1 hoặc 7:3).
+- **Sidebar có không:** Có. Cột bên phải (nhỏ hơn) sẽ đóng vai trò là một **Sidebar** chứa Form đặt bàn (được thiết kế dạng `position: sticky` để luôn trượt theo màn hình).
+- **Cột chính (bên trái):** Chứa Hero Image, Grid 6 ảnh món ăn (3 cột), và Bản đồ Google Maps.
