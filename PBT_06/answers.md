@@ -29,3 +29,32 @@
 - **`.container`:** Là container có **chiều rộng tối đa (max-width) cố định** thay đổi nhảy bậc theo từng kích thước màn hình (sm, md, lg, xl, xxl). Nó luôn tự động căn giữa và tạo ra khoảng lề (margin) hai bên trên các màn hình lớn.
 - **`.container-fluid`:** Là container luôn luôn mở rộng **chiếm 100% chiều rộng màn hình** (`width: 100%`) bất kể thiết bị đang xem là điện thoại hay màn hình siêu rộng.
 - **`.container-md`:** Là sự kết hợp. Trên các màn hình nhỏ hơn Tablet (< 768px), nó hoạt động giống như `.container-fluid` (chiếm 100% chiều rộng). Nhưng từ màn hình Tablet (md, ≥ 768px) trở lên, nó bắt đầu có `max-width` cố định và hoạt động giống như `.container` bình thường.
+
+### Câu C1: Tùy biến Bootstrap (Customization)
+
+**1. Giải thích quy trình đổi màu `$primary`:**
+Để thay đổi màu gốc của Bootstrap (từ xanh dương mặc định sang đỏ `#E63946`), ta không thể dùng bản CDN liên kết mạng thông thường mà phải tự biên dịch lại mã nguồn của Bootstrap bằng SASS.
+- **Công cụ cần có:** Cài đặt Node.js/npm. Cài đặt package `bootstrap` qua npm và một trình biên dịch SASS (như extension *Live Sass Compiler* trên VS Code).
+- **Quy trình:**
+  1. Tạo một file SASS tùy chỉnh (ví dụ `custom.scss`).
+  2. Khai báo đè biến màu sắc ngay ở những dòng đầu tiên của file: `$primary: #E63946;`
+  3. Import toàn bộ mã nguồn SASS của Bootstrap vào **SAU** dòng khai báo biến đó: `@import "node_modules/bootstrap/scss/bootstrap";`
+  4. Chạy trình biên dịch SASS để dịch file `custom.scss` này thành file `style.css` thuần và gắn file đó vào HTML.
+
+**2. Tại sao NÊN dùng SASS variables thay vì override CSS thuần (VD: `.btn-primary { background: red; }`)?**
+- **Tính nhất quán & Tự động hóa:** Biến `$primary` trong SASS của Bootstrap được dùng để tạo ra hàng chục class khác nhau (như `btn-primary`, `text-primary`, `bg-primary`, `border-primary`, `alert-primary`...). Nếu ta đổi giá trị biến `$primary` ở gốc, SASS sẽ tự động tính toán lại, tự động thay đổi màu hover, active và update đồng loạt toàn bộ các component trên web.
+- Ngược lại, nếu override bằng CSS thuần, ta sẽ phải thủ công viết lại hàng chục, hàng trăm dòng code cho từng component, rất dễ gây thiếu sót, code bị phình to (phải ghi đè) và cực kì khó bảo trì.
+
+---
+
+### Câu C2: So sánh CSS thuần và Bootstrap
+
+| Tiêu chí | CSS Thuần | Bootstrap 5 |
+|----------|-----------|-------------|
+| **Số dòng CSS cần viết** | Rất nhiều (khoảng 100 - 300 dòng CSS chỉ cho Navbar responsive và Card). | 0 dòng CSS tùy chỉnh (Toàn bộ thao tác chỉ là gán class có sẵn vào thẻ HTML). |
+| **Thời gian phát triển** | Tốn nhiều thời gian (vài tiếng đến vài ngày) để căn chỉnh layout, test responsive trên Mobile/Tablet. | Cực kì nhanh (vài chục phút) do mọi thứ đã được dựng và test độ tương thích sẵn. |
+| **Khả năng tùy biến** | Tuyệt đối (100%). Thích làm theo thiết kế lạ mắt, dị biệt nào cũng được. | Thấp hơn. Giao diện thường mang tính rập khuôn (Bootstrap look). Muốn tùy biến sâu bắt buộc phải hiểu vững về SASS. |
+
+**Kết luận:**
+- **NÊN dùng Bootstrap khi:** Cần tạo nhanh nguyên mẫu (Prototype / MVP) cho dự án; Cần làm trang quản trị (Admin Dashboard); Team phát triển không có Designer chuyên nghiệp; Các hệ thống cần sự ổn định và nhanh chóng hơn là thẩm mỹ độc lạ.
+- **KHÔNG NÊN dùng Bootstrap khi:** Dự án yêu cầu một bản thiết kế UI/UX độc đáo, mang đậm bản sắc thương hiệu riêng; Yêu cầu khắt khe về chuẩn pixel-perfect so với bản vẽ Figma; Các Landing page cần file CSS phải cực kì nhỏ gọn để tối ưu hóa hiệu năng tải trang cao nhất (có thể cân nhắc TailwindCSS thay thế).
