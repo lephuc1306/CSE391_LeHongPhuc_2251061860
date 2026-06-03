@@ -1,0 +1,75 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.app-container {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    flex-wrap: wrap; /* Tràn dòng trên màn hình nhỏ */
+}
+
+/* Style cho bảng điều khiển */
+.control-panel {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    font-family: Arial, sans-serif; /* Font thường cho dễ đọc */
+}
+
+.form-group { margin-bottom: 15px; }
+
+input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn-add, .btn-clear {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+}
+
+.btn-add { background-color: #28a745; margin-bottom: 10px; }
+.btn-add:hover { background-color: #218838; }
+
+.btn-clear { background-color: #dc3545; margin-top: 15px; }
+.btn-clear:hover { background-color: #c82333; }
+
+.options label {
+    display: block;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+/* Style cho hóa đơn (Giữ nguyên như cũ) */
+.receipt {
+    background: #fff;
+    width: 380px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    color: #333;
+}
+.title { text-align: center; font-size: 22px; margin-bottom: 5px; font-weight: bold; }
+.divider { border-top: 2px dashed #333; margin: 15px 0; }
+.item-row, .row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 15px; }
+.item-details { display: flex; gap: 15px; }
+.item-name { width: 120px; }
+.summary .row { margin-bottom: 10px; }
+.total-row { font-size: 20px; font-weight: bold; margin-top: 10px; }

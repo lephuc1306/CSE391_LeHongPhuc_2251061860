@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hóa Đơn Nhà Hàng Động</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <div class="control-panel">
+            <h3>📝 Nhập Món Ăn</h3>
+            <div class="form-group">
+                <input type="text" id="itemName" placeholder="Tên món (VD: Phở bò)">
+            </div>
+            <div class="form-group">
+                <input type="number" id="itemPrice" placeholder="Giá tiền (VD: 65000)">
+            </div>
+            <div class="form-group">
+                <input type="number" id="itemQty" placeholder="Số lượng" value="1" min="1">
+            </div>
+            <button id="btnAddItem" class="btn-add">Thêm vào hóa đơn</button>
+
+            <h3 style="margin-top: 20px;">⚙️ Tùy chọn</h3>
+            <div class="options">
+                <label>
+                    <input type="checkbox" id="chkWednesday"> Hôm nay là Thứ 4 (Giảm 5%)
+                </label>
+                <label>
+                    <input type="checkbox" id="chkTip"> Thêm Tip (5%)
+                </label>
+            </div>
+            <button id="btnClear" class="btn-clear">Xóa làm lại</button>
+        </div>
+
+        <div class="receipt">
+            <h2 class="title">HÓA ĐƠN NHÀ HÀNG</h2>
+            <div class="divider"></div>
+            
+            <div id="order-items">
+                <div style="text-align: center; color: #888; font-style: italic;">Chưa có món ăn nào</div>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="summary">
+                <div class="row"><span>Tổng cộng:</span> <span id="subtotal">0đ</span></div>
+                <div class="row"><span id="discount-label">Giảm giá (0%):</span> <span id="discount">0đ</span></div>
+                <div class="row"><span>VAT (8%):</span> <span id="vat">0đ</span></div>
+                <div class="row"><span id="tip-label">Tip (0%):</span> <span id="tip">0đ</span></div>
+            </div>
+            
+            <div class="divider"></div>
+            <div class="row total-row"><span>THANH TOÁN:</span> <span id="total">0đ</span></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

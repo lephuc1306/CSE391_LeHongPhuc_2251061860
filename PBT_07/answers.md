@@ -75,3 +75,67 @@ const html = `
     <span>Giá: ${price}đ</span>
 </div>
 `;
+
+## PHẦN C — SUY LUẬN
+
+### Câu C1: Debug JavaScript
+
+Dưới đây là 6 lỗi trong đoạn code đã cho, giải thích và cách khắc phục:
+
+1. **Lỗi logic toán tử so sánh (Nghiêm trọng nhất):** `if (giaSauGiam = 0)`
+   - *Giải thích:* Toán tử `=` là toán tử gán, không phải so sánh. Lệnh này vô tình gán `giaSauGiam` bằng `0`, làm cho biểu thức trong `if` mang giá trị `0` (Falsy), nên dòng `console.log` không bao giờ chạy, đồng thời làm hàm luôn trả về 0.
+   - *Cách sửa:* Đổi thành so sánh tuyệt đối `if (giaSauGiam === 0)`.
+
+2. **Lỗi "Ẩn" vòng lặp với `setTimeout` (Closure bug):** `for (var i = 0; i < 5; i++)`
+   - *Giải thích:* Biến `var` có function scope. Khi vòng lặp chạy, nó tạo ra 5 cái `setTimeout`, nhưng do dùng `var`, tất cả cùng trỏ chung vào một ô nhớ `i`. Sau 1 giây, vòng lặp đã chạy xong và `i` đạt giá trị 5. Kết quả là in ra 5 dòng `"Item 5"`.
+   - *Cách sửa:* Đổi `var i = 0` thành `let i = 0`. `let` có block scope, mỗi vòng lặp sẽ tạo ra một scope riêng với giá trị `i` độc lập.
+
+3. **Lỗi kiểu dữ liệu truyền vào:** `tinhGiaGiamGia("100000", 20)`
+   - *Giải thích:* Truyền chuỗi `"100000"` thay vì số. Dù JS có khả năng tự ép kiểu (Type Coercion) khi dùng phép `*` và `-`, nhưng đây là thói quen xấu, dễ gây lỗi NaN nếu chuỗi không hợp lệ hoặc dùng phép `+`.
+   - *Cách sửa:* Bỏ ngoặc kép, truyền số `100000`.
+
+4. **Lỗi khai báo biến cũ:** `var giamGia = ...`
+   - *Giải thích:* Không nên dùng `var` trong JS hiện đại. Biến `giamGia` tính xong không thay đổi nữa.
+   - *Cách sửa:* Nên dùng `const giamGia = ...`
+
+5. **Lỗi xử lý kết quả trả về không đồng nhất:**
+   - *Giải thích:* Khi phần trăm sai, hàm trả về chuỗi (`"Phần trăm giảm không hợp lệ"`), nhưng bên dưới lại dùng `console.log("Giá: " + gia2)`. Kết quả in ra `"Giá: Phần trăm giảm không hợp lệ"`, không hợp lý về mặt hiển thị.
+   - *Cách sửa:* Nên `throw new Error("...")` thay vì `return string`, hoặc kiểm tra kiểu dữ liệu trả về trước khi in.
+
+6. **Lỗi cú pháp:**
+   - *Giải thích:* Thiếu dấu chấm phẩy (`;`) ở cuối hầu hết các dòng lệnh. Mặc dù JS có cơ chế ASI (tự chèn chấm phẩy), nhưng không viết chấm phẩy dễ gây lỗi khó lường khi thu gọn code.
+
+**Code sau khi đã sửa hoàn chỉnh:**
+```javascript
+function tinhGiaGiamGia(giaBan, phanTramGiam) {
+    if (phanTramGiam < 0 || phanTramGiam > 100) {
+        throw new Error("Phần trăm giảm không hợp lệ");
+    }
+    
+    const giamGia = (giaBan * phanTramGiam) / 100;
+    let giaSauGiam = giaBan - giamGia;
+    
+    if (giaSauGiam === 0) {
+        console.log("Sản phẩm miễn phí!");
+    }
+    
+    return giaSauGiam;
+}
+
+// Test
+try {
+    const gia = tinhGiaGiamGia(100000, 20); // Sửa thành số
+    console.log("Giá sau giảm: " + gia + "đ");
+
+    const gia2 = tinhGiaGiamGia(50000, 110);
+    console.log("Giá: " + gia2 + "đ");
+} catch (error) {
+    console.error(error.message);
+}
+
+// Sửa var thành let
+for (let i = 0; i < 5; i++) {
+    setTimeout(function() {
+        console.log("Item " + i);
+    }, 1000);
+}
