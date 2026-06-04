@@ -112,3 +112,23 @@ console.log(product.price);            // 25990000 (Mảng gốc/Object gốc KH
 console.log(product.specs.ram);        // 16
 // Giải thích: Spread operator `{ ...product }` chỉ tạo "Shallow Copy" (copy nông) ở lớp ngoài cùng. Các thuộc tính là Object lồng bên trong (như `specs`) vẫn bị tham chiếu (share reference) cùng một ô nhớ với object gốc. Đổi `copy.specs.ram` thì `product.specs.ram` cũng đổi theo.
 
+### Câu C1: Refactor Code (10đ)
+
+Đoạn code gốc sử dụng vòng lặp `for` thủ công và viết rất dài dòng. Sử dụng Array Methods (`filter`, `map`, `sort`), Arrow Functions và Destructuring, ta có thể viết lại đoạn code này chỉ trong vài dòng rất sạch sẽ và dễ đọc (Declarative Programming):
+
+```javascript
+const processOrders = orders => orders
+    // 1. Lọc các đơn hoàn thành và có giá trị > 100k
+    .filter(({ status, total }) => status === "completed" && total > 100000)
+    
+    // 2. Biến đổi dữ liệu, tính toán discount và finalTotal
+    .map(({ id, customer, total }) => ({
+        id, 
+        customer, 
+        total,
+        discount: total * 0.1,
+        finalTotal: total * 0.9 // Vì giảm 10% nên còn 90%
+    }))
+    
+    // 3. Sắp xếp giảm dần theo finalTotal
+    .sort((a, b) => b.finalTotal - a.finalTotal);
