@@ -1,0 +1,78 @@
+* {
+    box-sizing: border-box; margin: 0; padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #74b9ff, #0984e3);
+    min-height: 100vh;
+    display: flex; justify-content: center; align-items: center;
+    padding: 20px; color: #2d3436;
+}
+
+.app-container {
+    background: white; width: 100%; max-width: 450px;
+    border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow: hidden; padding: 30px;
+}
+
+header h1 {
+    text-align: center; font-size: 24px; margin-bottom: 20px; color: #0984e3;
+}
+
+#searchForm {
+    display: flex; gap: 10px; margin-bottom: 20px;
+}
+
+#cityInput {
+    flex: 1; padding: 12px 15px; border: 1px solid #dfe6e9;
+    border-radius: 8px; font-size: 16px; outline: none;
+}
+#cityInput:focus { border-color: #0984e3; }
+
+#searchForm button {
+    padding: 12px 20px; background: #0984e3; color: white;
+    border: none; border-radius: 8px; cursor: pointer;
+    font-size: 16px; font-weight: bold; transition: background 0.2s;
+}
+#searchForm button:hover { background: #74b9ff; }
+
+/* Lịch sử tìm kiếm */
+.history-container { margin-bottom: 20px; }
+.history-container p { font-size: 14px; color: #636e72; margin-bottom: 10px; }
+.history-list { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.history-btn {
+    padding: 6px 12px; background: #f1f2f6; border: 1px solid #dfe4ea;
+    border-radius: 20px; cursor: pointer; font-size: 13px; color: #2f3542;
+}
+.history-btn:hover { background: #dfe4ea; }
+
+/* Các trạng thái hiển thị */
+#weatherContainer {
+    min-height: 200px; display: flex;
+    justify-content: center; align-items: center;
+    text-align: center; background: #f8f9fa; border-radius: 12px; padding: 20px;
+}
+
+.empty-state { color: #b2bec3; font-style: italic; }
+
+/* Trạng thái 1: Loading */
+.loading-state { display: flex; flex-direction: column; align-items: center; gap: 15px; }
+.spinner {
+    width: 40px; height: 40px; border: 4px solid #dfe6e9;
+    border-top: 4px solid #0984e3; border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* Trạng thái 2: Error */
+.error-state { color: #d63031; }
+.error-state p { margin-bottom: 10px; font-weight: bold; }
+.error-state .hint { font-size: 14px; font-weight: normal; color: #636e72; }
+
+/* Trạng thái 3: Success */
+.weather-card h2 { font-size: 28px; margin-bottom: 10px; }
+.weather-card .temp { font-size: 48px; font-weight: bold; color: #0984e3; margin-bottom: 10px; }
+.weather-card .desc { font-size: 18px; text-transform: capitalize; margin-bottom: 20px; }
+.weather-card .details { display: flex; justify-content: space-around; font-size: 15px; color: #636e72; }
