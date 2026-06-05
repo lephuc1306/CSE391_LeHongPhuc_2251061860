@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Shortcuts & A11y</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Ứng dụng Quản lý Phím tắt</h1>
+        <p>Thử nhấn <kbd>Ctrl</kbd> + <kbd>K</kbd> để mở Command Palette.</p>
+        <p>Sử dụng phím <kbd>Tab</kbd> để di chuyển giữa các phần tử.</p>
+    </header>
+
+    <main>
+        <section aria-label="Thư viện ảnh">
+            <h2>Thư viện Ảnh (Gallery)</h2>
+            <p class="hint">Click vào ảnh để mở. Trong lúc mở có thể dùng <kbd>←</kbd> <kbd>→</kbd> để chuyển ảnh, <kbd>1</kbd>-<kbd>9</kbd> để nhảy, <kbd>Space</kbd> để chạy/dừng Slideshow.</p>
+            <div id="galleryGrid" class="gallery-grid">
+                </div>
+        </section>
+    </main>
+
+    <div id="galleryModal" class="modal" aria-modal="true" role="dialog" aria-label="Trình xem ảnh">
+        <div class="modal-content gallery-content">
+            <button id="closeGallery" class="close-btn" aria-label="Đóng thư viện ảnh">❌</button>
+            <div class="image-wrapper">
+                <button id="prevBtn" class="nav-btn" aria-label="Ảnh trước">◀</button>
+                <img id="mainImage" src="" alt="Ảnh phóng to">
+                <button id="nextBtn" class="nav-btn" aria-label="Ảnh tiếp theo">▶</button>
+            </div>
+            <p id="slideshowIndicator" class="status-text">Slideshow: Đang dừng</p>
+        </div>
+    </div>
+
+    <div id="commandPalette" class="modal" aria-modal="true" role="dialog" aria-label="Bảng lệnh (Command Palette)">
+        <div class="palette-content">
+            <input type="text" id="commandInput" placeholder="Nhập lệnh tìm kiếm... (VD: Đăng, Chế độ...)" autocomplete="off" aria-label="Ô tìm kiếm lệnh">
+            <ul id="commandList" class="command-list" role="listbox">
+                </ul>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
