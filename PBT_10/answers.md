@@ -1,4 +1,4 @@
-### Câu A1 — Sync vs Async
+ Câu A1 — Sync vs Async
 
 **1. Dự đoán thứ tự output:**
 ```text
