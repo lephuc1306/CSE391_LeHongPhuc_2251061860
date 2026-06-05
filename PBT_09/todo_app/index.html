@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App - Vanilla JS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Todo App</h1>
+            <form id="todoForm">
+                <input type="text" id="todoInput" placeholder="Bạn muốn làm gì hôm nay?" autocomplete="off">
+                <button type="submit">Thêm</button>
+            </form>
+        </header>
+
+        <main>
+            <ul id="todoList"></ul>
+        </main>
+
+        <footer>
+            <span id="todoCount">0 items left</span>
+            <nav id="filters">
+                <a href="#" class="active">All</a>
+                <a href="#">Active</a>
+                <a href="#">Completed</a>
+            </nav>
+            <button id="clearCompleted">Clear completed</button>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
