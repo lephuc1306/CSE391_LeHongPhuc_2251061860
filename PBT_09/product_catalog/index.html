@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Store - Interactive Catalog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">TechStore</div>
+        <div class="header-actions">
+            <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm...">
+            
+            <button id="themeToggle" class="icon-btn">🌙</button>
+            
+            <div class="cart-wrapper">
+                <span class="cart-icon">🛒</span>
+                <span id="cartBadge" class="badge">0</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <aside class="sidebar">
+            <div class="filter-group">
+                <h3>Danh mục</h3>
+                <div id="categoryContainer" class="category-list">
+                    </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>Sắp xếp theo</h3>
+                <select id="sortSelect">
+                    <option value="default">Mặc định</option>
+                    <option value="price-asc">Giá: Thấp đến Cao</option>
+                    <option value="price-desc">Giá: Cao xuống Thấp</option>
+                    <option value="name-asc">Tên: A - Z</option>
+                    <option value="rating-desc">Đánh giá cao nhất</option>
+                </select>
+            </div>
+        </aside>
+
+        <section class="catalog">
+            <div id="productGrid" class="grid">
+                </div>
+        </section>
+    </main>
+
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <button id="closeModal" class="close-btn">❌</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
