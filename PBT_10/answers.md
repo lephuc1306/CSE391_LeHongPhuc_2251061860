@@ -1,6 +1,6 @@
  Câu A1 — Sync vs Async
 
-**1. Dự đoán thứ tự output:**
+1. Dự đoán thứ tự output:
 ```text
 1 - Start
 4 - End
